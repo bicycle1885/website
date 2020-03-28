@@ -2,10 +2,12 @@
 {% import "macros.html" as macros %}
 
 {% block metadata %}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="og:url" content="{{ page.permalink }}" />
+    <!--<meta property="og:image" content="" />-->
     <meta property="og:description" content="{{ page.summary | striptags }}" />
+    <meta property="og:published_time" content="{{ page.date }}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ page.title }}" />
     <meta name="twitter:description" content="{{ page.summary | striptags }}" />
