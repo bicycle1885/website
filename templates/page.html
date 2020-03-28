@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
+{% block metadata %}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ page.title }}" />
+{% endblock metadata %}
+
 {% block content %}
 
 <h1> {{ page.title }} </h1>
