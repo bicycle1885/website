@@ -40,9 +40,17 @@ img {
     filter: drop-shadow(0 10px 10px #f8f8f8);
 }
 
+article {
+    margin-bottom: 2rem;
+}
+
 article .title {
     font-size: 1.3rem;
     font-weight: bold;
+}
+
+article p {
+    margin: 0;
 }
 
 .container {

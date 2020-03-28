@@ -7,6 +7,7 @@
         <a class="title" href="{{ page.permalink }}">{{page.title}}</a>
         <time datetime="{{page.date}}">{{page.date}}</time>
         {{page.summary | safe}}
+        <a href="{{ page.permalink }}">» 続きを読む</a>
     </article>
 {% endfor %}
 
