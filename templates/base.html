@@ -7,15 +7,19 @@
     </head>
     <body>
         <header>
-            <h1 id="title">
-                <a href="/">println("bicycle1885's blog")</a>
-            </h1>
+            <div class="container">
+                <h1 id="title">
+                    <a href="/">println("bicycle1885's blog")</a>
+                </h1>
+            </div>
         </header>
         <main>
             {% block content %} {% endblock %}
         </main>
         <footer>
-            Kenta Sato / <a href="https://github.com/bicycle1885/">GitHub</a> / <a href="https://twitter.com/bicycle1885">Twitter</a>
+            <div class="container">
+                Kenta Sato / <a href="https://github.com/bicycle1885/">GitHub</a> / <a href="https://twitter.com/bicycle1885">Twitter</a>
+            </div>
         </footer>
     </body>
 </html>
