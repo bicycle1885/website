@@ -1,18 +1,13 @@
 $main-max-width: 760px;
+$text-color: #111;
 
 body {
     font-family: sans-serif;
-    color: #111;
+    color: $text-color;
 }
 
-#title {
-    font-size: 1.2rem;
-    font-family: monospace;
-}
-
-#title a {
-    text-decoration: none;
-    color: black;
+a {
+    color: $text-color;
 }
 
 header {
@@ -47,6 +42,7 @@ article {
 article .title {
     font-size: 1.3rem;
     font-weight: bold;
+    text-decoration: none;
 }
 
 article p {
@@ -56,4 +52,14 @@ article p {
 .container {
     max-width: $main-max-width;
     margin: 0 auto;
+}
+
+#title {
+    font-size: 1.2rem;
+    font-family: monospace;
+}
+
+#title a {
+    text-decoration: none;
+    color: black;
 }
