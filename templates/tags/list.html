@@ -2,9 +2,7 @@
 {% import "macros.html" as macros %}
 
 {% block content %}
-
-{% for term in terms %}
-    {{ macros::tag(name=term.name) }}
-{% endfor %}
-
+    {% for term in terms %}
+        {{ macros::tag(name=term.name) }}
+    {% endfor %}
 {% endblock content %}

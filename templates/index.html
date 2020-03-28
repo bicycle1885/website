@@ -2,9 +2,7 @@
 {% import "macros.html" as macros %}
 
 {% block content %}
-
-{% for page in paginator.pages %}
-    {{ macros::article(page=page) }}
-{% endfor %}
-
+    {% for page in paginator.pages %}
+        {{ macros::article(page=page) }}
+    {% endfor %}
 {% endblock content %}
