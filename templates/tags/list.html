@@ -3,8 +3,8 @@
 
 {% block content %}
 
-{% for page in paginator.pages %}
-    {{ macros::article(page=page) }}
+{% for term in terms %}
+    {{ macros::tag(name=term.name) }}
 {% endfor %}
 
 {% endblock content %}

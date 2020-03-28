@@ -1,6 +1,8 @@
 +++
 title = "ブログを始めました"
 date = 2020-03-28
+[taxonomies]
+tags = ["meta", "zola", "netlify"]
 +++
 
 この記事がブログの最初のポストです。

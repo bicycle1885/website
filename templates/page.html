@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 
 <h1> {{ page.title }} </h1>
-<time datetime="{{page.date}}">{{page.date}}</time>
+<time datetime="{{ page.date }}">{{ page.date }}</time>
+{% for tag in page.taxonomies["tags"] %}
+    {{ macros::tag(name=tag) }}
+{% endfor %}
 
 {{ page.content | safe }}
 

@@ -1,0 +1,15 @@
+{% macro tag(name) %}
+    <a class="tag" href="/tags/{{ name }}">{{ name }}</a>
+{% endmacro tag %}
+
+{% macro article(page) %}
+    <article>
+        <a class="title" href="{{ page.permalink }}">{{ page.title }}</a>
+        <time datetime="{{ page.date }}">{{ page.date }}</time>
+        {% for tag in page.taxonomies["tags"] %}
+            {{ self::tag(name=tag) }}
+        {% endfor %}
+        {{ page.summary | safe }}
+        <a href="{{ page.permalink }}">» 続きを読む</a>
+    </article>
+{% endmacro article %}
