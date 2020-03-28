@@ -1,0 +1,48 @@
+$main-max-width: 760px;
+
+body {
+    font-family: sans-serif;
+    color: #111;
+}
+
+#title {
+    font-size: 1.2rem;
+    font-family: monospace;
+    max-width: $main-max-width;
+    margin: 0 auto;
+}
+
+#title a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    height: 3rem;
+}
+
+main {
+    max-width: $main-max-width;
+    margin: 0 auto;
+}
+
+h2 {
+    margin-top: 2rem;
+    border-bottom: solid 1px;
+}
+
+pre {
+    margin-left: 2rem;
+}
+
+img {
+    display: block;
+    margin: 0 auto 35px;
+    max-width: 550px;
+    filter: drop-shadow(0 10px 10px #f8f8f8);
+}
+
+article .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
