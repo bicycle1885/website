@@ -1,6 +1,7 @@
 $main-max-width: 760px;
 $text-color: #111;
 $indent: 1.3rem;
+$left-line: solid 1px #bfbfbf;
 
 body {
     font-family: sans-serif;
@@ -41,6 +42,7 @@ code {
 
 pre {
     padding-left: $indent;
+    border-left: $left-line;
 }
 
 ul {
@@ -55,7 +57,7 @@ blockquote {
     color: #444;
     margin-left: 0;
     padding-left: $indent;
-    border-left: solid 1px #888;
+    border-left: $left-line;
 }
 
 img {
