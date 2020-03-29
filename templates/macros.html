@@ -9,7 +9,7 @@
         {% for tag in page.taxonomies["tags"] %}
             {{ self::tag(name=tag) }}
         {% endfor %}
-        {{ page.summary | safe }}
+        <p>{{ page.summary | striptags }}</p>
         <a href="{{ page.permalink }}">» 続きを読む</a>
     </article>
 {% endmacro article %}
