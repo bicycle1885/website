@@ -18,9 +18,12 @@ p {
 }
 
 a {
-    color: $text-color;
-    border-bottom: 1px solid #999;
+    color: #1d4591;
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 header {
@@ -104,10 +107,15 @@ article {
 }
 
 article .title {
+    color: $text-color;
     font-size: 1.3rem;
     font-weight: bold;
     border: none;
     text-decoration: none;
+}
+
+article .title:hover {
+    text-decoration: underline;
 }
 
 article p {
@@ -120,6 +128,8 @@ article p {
 }
 
 .tag {
+    color: $text-color;
+    text-decoration: underline;
 }
 
 #title {
