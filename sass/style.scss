@@ -1,5 +1,6 @@
 $main-max-width: 760px;
 $text-color: #111;
+$indent: 1.3rem;
 
 body {
     font-family: sans-serif;
@@ -32,20 +33,28 @@ h2 {
     border-bottom: solid 1px;
 }
 
-pre {
-    margin-left: 2rem;
-}
-
 code {
     font-family: monospace;
     padding: .2rem .4rem;
     background-color: #fafafa;
 }
 
+pre {
+    padding-left: $indent;
+}
+
+ul {
+    padding-left: $indent;
+}
+
+ol {
+    padding-left: $indent;
+}
+
 blockquote {
     color: #444;
     margin-left: 0;
-    padding-left: 1.5rem;
+    padding-left: $indent;
     border-left: solid 1px #888;
 }
 
