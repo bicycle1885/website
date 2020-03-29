@@ -1,6 +1,7 @@
 $main-max-width: 760px;
 $text-color: #111;
-$indent: 1.3rem;
+$indent: 1.5rem;
+$indent-narrow: 0.4rem;
 $left-line: solid 1px #bfbfbf;
 
 body {
@@ -56,8 +57,21 @@ ol {
 blockquote {
     color: #444;
     margin-left: 0;
+    margin-right: 0;
     padding-left: $indent;
+    padding-right: $indent;
     border-left: $left-line;
+}
+
+@media only screen and (max-width: 500px) {
+    pre {
+        font-size: 11px;
+        padding-left: $indent-narrow;
+    }
+    blockquote {
+        padding-left: $indent-narrow;
+        padding-right: $indent-narrow;
+    }
 }
 
 img {
