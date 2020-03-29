@@ -19,6 +19,8 @@ p {
 
 a {
     color: $text-color;
+    border-bottom: 1px solid #999;
+    text-decoration: none;
 }
 
 header {
@@ -125,6 +127,7 @@ article p {
 }
 
 #title a {
-    text-decoration: none;
     color: black;
+    border: none;
+    text-decoration: none;
 }
