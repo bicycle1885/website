@@ -134,6 +134,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
 ### 初版第1刷
 
 - *2.4.7 パラメトリック型の階層関係*
+
     p.52の中段のコード例で
     ```julia
     function distance(p::Point{T<:Number}) where T
@@ -148,6 +149,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
     ```
 
 - *2.8.8 識別子の変換規則*
+
     p.93の説明で使われている「ローカル変数」という言葉は，厳密にはあまり正しくない使い方である。
     マクロがfor文などのローカルスコープの外で展開されると，分類としてはグローバル変数になることもある。
     ただし，衛生的なマクロでは普通には参照できない変数名になるので，実質的にはローカル変数と考えても問題はないと思われる。
