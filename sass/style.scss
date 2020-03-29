@@ -36,12 +36,13 @@ h2 {
 }
 
 code {
-    font-family: monospace;
+    font-family: "Roboto Mono", "Noto Mono", monospace;
     padding: .2rem .4rem;
     background-color: #fafafa;
 }
 
 pre {
+    font-family: "Roboto Mono", "Noto Mono", monospace;
     padding-left: $indent;
     border-left: $left-line;
 }
