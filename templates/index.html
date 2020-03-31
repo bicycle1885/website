@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
+{% block title %}
+    <title>bicycle1885's blog</title>
+    <meta name="description" content="The home page of bicycle1885's blog about technology, research, and other topics.">
+{% endblock title %}
+
 {% block content %}
     {% for page in paginator.pages %}
         {{ macros::article(page=page) }}

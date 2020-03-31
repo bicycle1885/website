@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
+{% block title %}
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.summary | striptags }}">
+{% endblock title %}
+
 {% block metadata %}
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ page.title }}" />
