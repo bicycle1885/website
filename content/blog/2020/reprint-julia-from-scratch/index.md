@@ -1,5 +1,5 @@
 +++
-title = "「1から始めるJuliaプログラミング」が重版になりました"
+title = "「1から始めるJuliaプログラミング」が重版になります"
 date = 2020-03-31
 [taxonomies]
 tags = ["julia", "book"]
