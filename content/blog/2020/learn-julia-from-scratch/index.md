@@ -141,7 +141,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
         # 何らかの処理
     end
     ```
-    と書いてあるが，正しくは次の通り
+    と書かれているが，正しくは次の通り
     ```julia
     function distance(p::Point{T}) where T <: Number
         # 何らかの処理
@@ -153,6 +153,23 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
     p.93の説明で使われている「ローカル変数」という言葉は，厳密にはあまり正しくない使い方である。
     マクロがfor文などのローカルスコープの外で展開されると，分類としてはグローバル変数になることもある。
     ただし，衛生的なマクロでは普通には参照できない変数名になるので，実質的にはローカル変数と考えても問題はないと思われる。
+
+- *3.1.5 BLAS*
+
+    p.122下段のコード例で，
+    ```
+    julia> BLAS.gemm!('T', 1.0, A, x, 1.0, y)
+    2-element Array{Float64,1}:
+     14.0
+     32.0
+    ```
+    と書かれているが，正しくは次の通り
+    ```
+    julia> BLAS.gemm!('N', 'T', 1.0, A, B, 1.0, C)
+    3×3 Array{Float64,2}:
+     17.0  22.0  27.0
+     22.0  29.0  36.0
+    ```
 
 - *3.2.5 XMLファイルの入出力*
 
