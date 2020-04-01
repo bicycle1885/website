@@ -156,7 +156,10 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
 
 - *3.1.5 BLAS*
 
-    p.122下段のコード例で，
+    p.122上段の`y += α * A * x + β * y`という記述は、正しくは`y = α * A * x + β * y`である。
+    また、下段の`y += α * A * B + β * C`という記述は、正しくは`C = α * A * B + β * C`である。
+
+    さらに、p.122下段のコード例で，
     ```
     julia> BLAS.gemm!('T', 1.0, A, x, 1.0, y)
     2-element Array{Float64,1}:
