@@ -141,7 +141,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
         # 何らかの処理
     end
     ```
-    と書かれているが，正しくは次の通り
+    と書かれているが，正しくは次のとおりである。
     ```julia
     function distance(p::Point{T}) where T <: Number
         # 何らかの処理
@@ -174,3 +174,23 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
 - *3.2.5 XMLファイルの入出力*
 
     p.129下段の本文中で「EzXML.jl」が1ヶ所「ExXML.jl」と誤記されている。
+
+- *3.5.5 オブジェクト指向インターフェイス*
+
+    p.159下段のコード例で
+    ```julia
+    for i in 1:2, j in 1:3
+        ax = axes[i,j]
+        ax.plot(x, x .^ (i+j))            # プロット
+        ax.set_title("\$y = x^$(i+j)\$")  # タイトルの設定
+    end
+    ```
+    と書かれているが、正しい計算式は`i+j`ではなく`3(i-1)+j`である。
+    したがって、正しくは次のとおりである。
+    ```julia
+    for i in 1:2, j in 1:3
+        ax = axes[i,j]
+        ax.plot(x, x .^ (3(i-1)+j))            # プロット
+        ax.set_title("\$y = x^$(3(i-1)+j)\$")  # タイトルの設定
+    end
+    ```
