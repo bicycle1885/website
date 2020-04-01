@@ -175,7 +175,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
 
     p.129下段の本文中で「EzXML.jl」が1ヶ所「ExXML.jl」と誤記されている。
 
-- *3.5.5 オブジェクト指向インターフェイス*
+- *3.5.5 オブジェクト指向インターフェース*
 
     p.159下段のコード例で
     ```julia
