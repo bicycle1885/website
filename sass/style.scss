@@ -3,7 +3,7 @@ $text-color: #222;
 $indent: 1.5rem;
 $indent-narrow: 0.4rem;
 $margin-bottom-block: 1.8rem;
-$margin-bottom-section: 2.0rem;
+$margin-bottom-section: 2.4rem;
 $left-line: solid 1px #bfbfbf;
 
 body {
@@ -32,7 +32,6 @@ a {
 }
 
 header {
-    height: 5rem;
     margin-bottom: $margin-bottom-section;
 
     #title {
@@ -60,7 +59,7 @@ header {
 
 main {
     max-width: $main-max-width;
-    margin: 0 auto;
+    margin: 0 auto $margin-bottom-section;
 
     h1:first-child {
         margin-top: 0;
@@ -68,7 +67,6 @@ main {
 }
 
 footer {
-    margin-top: 2rem;
 }
 
 h2 {
