@@ -3,6 +3,8 @@
 
 {% block content %}
     {% for term in terms %}
-        {{ macros::tag(name=term.name) }}
+        <span class="tag-count">
+            {{ macros::tag(name=term.name) }} : {{ term.pages | length }}
+        </span>
     {% endfor %}
 {% endblock content %}
