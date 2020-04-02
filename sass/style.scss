@@ -3,6 +3,7 @@ $text-color: #222;
 $indent: 1.5rem;
 $indent-narrow: 0.4rem;
 $margin-bottom-block: 1.8rem;
+$margin-bottom-section: 2.0rem;
 $left-line: solid 1px #bfbfbf;
 
 body {
@@ -28,6 +29,30 @@ a:hover {
 
 header {
     height: 5rem;
+    margin-bottom: $margin-bottom-section;
+}
+
+#title {
+    font-size: 1.2rem;
+    font-family: monospace;
+    margin-bottom: .1rem;
+}
+
+#title a {
+    color: black;
+    border: none;
+    text-decoration: none;
+}
+
+nav a {
+    color: black;
+    font-size: .9rem;
+    font-weight: bold;
+    margin-right: 1.6rem;
+}
+
+nav a::before {
+    content: "> ";
 }
 
 main {
@@ -103,19 +128,22 @@ img {
 }
 
 article {
-    margin-bottom: 2rem;
+    margin-bottom: $margin-bottom-section;
 }
 
-article .title {
+.title {
     color: $text-color;
-    font-size: 1.3rem;
     font-weight: bold;
     border: none;
     text-decoration: none;
 }
 
-article .title:hover {
+.title:hover {
     text-decoration: underline;
+}
+
+article .title {
+    font-size: 1.3rem;
 }
 
 article p {
@@ -130,15 +158,4 @@ article p {
 .tag {
     color: $text-color;
     text-decoration: underline;
-}
-
-#title {
-    font-size: 1.2rem;
-    font-family: monospace;
-}
-
-#title a {
-    color: black;
-    border: none;
-    text-decoration: none;
 }
