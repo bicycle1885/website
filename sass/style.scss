@@ -32,7 +32,8 @@ a {
 }
 
 header {
-    margin-bottom: $margin-bottom-section;
+    max-width: $main-max-width;
+    margin: 0 auto $margin-bottom-section;
 
     #title {
         font-size: 1.2rem;
@@ -67,6 +68,8 @@ main {
 }
 
 footer {
+    max-width: $main-max-width;
+    margin: 0 auto;
 }
 
 h2 {
@@ -144,11 +147,6 @@ article {
             text-decoration: underline;
         }
     }
-}
-
-.container {
-    max-width: $main-max-width;
-    margin: 0 auto;
 }
 
 .tag {
