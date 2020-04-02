@@ -6,10 +6,13 @@ $margin-bottom-block: 1.8rem;
 $margin-bottom-section: 2.4rem;
 $left-line: solid 1px #bfbfbf;
 
+html {
+    font-size: 15px;
+}
+
 body {
     font-family: sans-serif;
     color: $text-color;
-    font-size: 16px;
     line-height: 1.8;
 }
 
