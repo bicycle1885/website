@@ -191,6 +191,17 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
 
     p.129下段の本文中で「EzXML.jl」が1ヶ所「ExXML.jl」と誤記されている。
 
+- *3.4.3 関数のdocstring*
+
+    p.144下段のコード例で
+    ```julia
+    # Argumetns
+    ```
+    と書かれているが、正しくは次のとおりである。
+    ```julia
+    # Arguments
+    ```
+
 - *3.5.5 オブジェクト指向インタフェース*
 
     p.159下段のコード例で
