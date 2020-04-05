@@ -235,15 +235,15 @@ drawSVG(draw.node, { width: 400, height: 150 });
 }</script>
 
 もっと多くのオブジェクトでも同期して動かせます。
-次の例は、41×41個の円のサイズを異なる周期で増減させています。
+次の例は、31×31個の円のサイズを異なる周期で増減させています。
 これくらいの数のオブジェクトなら、手元のブラウザでも遅延なく描画されているのではないでしょうか。
 最初から再生するにはブラウザをリロードしてください。
 
 ```js
 let draw = SVG();
 let r = 5;
-let nrows = 41;
-let ncols = 41;
+let nrows = 31;
+let ncols = 31;
 let center = { x: r * ncols , y: r * nrows };
 let timeline = new SVG.Timeline();
 for (let i = 0; i < nrows; ++i) {
@@ -264,8 +264,8 @@ drawSVG(draw.node, { width: ncols * r * 2, height: nrows * r * 2 });
 <script>{
 let draw = SVG();
 let r = 5;
-let nrows = 41;
-let ncols = 41;
+let nrows = 31;
+let ncols = 31;
 let center = { x: r * ncols , y: r * nrows };
 let timeline = new SVG.Timeline();
 for (let i = 0; i < nrows; ++i) {
