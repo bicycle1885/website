@@ -133,9 +133,22 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
 
 ### 初版第1刷
 
+- *2.1.1 変数*
+
+    p.18上段のコード例で、
+    ```
+    julia> 2(x-2)^2 - 3(x-2) + 1
+    11
+    ```
+    と書かれているが、正しくは次のとおりである。
+    ```
+    julia> 2(x-2)^2 - 3(x-2) + 1
+    12
+    ```
+
 - *2.4.7 パラメトリック型の階層関係*
 
-    p.52の中段のコード例で
+    p.52中段のコード例で
     ```julia
     function distance(p::Point{T<:Number}) where T
         # 何らかの処理
@@ -166,7 +179,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
      14.0
      32.0
     ```
-    と書かれているが、正しくは次の通り
+    と書かれているが、正しくは次のとおりである。
     ```
     julia> BLAS.gemm!('N', 'T', 1.0, A, B, 1.0, C)
     3×3 Array{Float64,2}:
