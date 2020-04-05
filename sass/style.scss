@@ -94,6 +94,7 @@ pre {
     padding-left: $indent;
     border-left: $left-line;
     margin-bottom: $margin-bottom-block;
+    overflow: auto;
 }
 
 ul {
