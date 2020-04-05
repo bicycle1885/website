@@ -35,6 +35,7 @@ tags = ["javascript", "svg", "meta"]
 
 SVG.jsの導入は簡単です。
 次のタグをHTMLの初めに記述するだけです。
+実際の使用例は[この記事のMarkdownファイル](https://raw.githubusercontent.com/bicycle1885/website/master/content/blog/2020/blog-svg-test/index.md)を参考にしてください。
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
