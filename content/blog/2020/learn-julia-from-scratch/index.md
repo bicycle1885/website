@@ -185,6 +185,7 @@ Juliaの[Discourseフォーラム](https://discourse.julialang.org/)や[Slackチ
     3×3 Array{Float64,2}:
      17.0  22.0  27.0
      22.0  29.0  36.0
+     27.0　36.0　45.0
     ```
 
 - *3.2.5 XMLファイルの入出力*
