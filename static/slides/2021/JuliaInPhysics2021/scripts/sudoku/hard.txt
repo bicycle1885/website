@@ -1,0 +1,15 @@
+# This problem is derived from the following link:
+# https://commons.wikimedia.org/wiki/File:Sudoku_puzzle_hard_for_brute_force.svg
+# This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.
+
+0 0 0  0 0 0  0 0 0
+0 0 0  0 0 3  0 8 5
+0 0 1  0 2 0  0 0 0
+
+0 0 0  5 0 7  0 0 0
+0 0 4  0 0 0  1 0 0
+0 9 0  0 0 0  0 0 0
+
+5 0 0  0 0 0  0 7 3
+0 0 2  0 1 0  0 0 0
+0 0 0  0 4 0  0 0 9
