@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>いまから使えるJulia言語</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/vs2015.min.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/stackoverflow-dark.min.css">
+        <style>
+            :root {
+                --slide-width: 1280px;
+                --slide-height: 720px;
+            }
+            html {
+                width: 100%;
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                background-color: #eee;
+                width: 100%;
+                height: 100%;
+            }
+            .slide-container {
+                margin: 10px auto;
+                box-shadow: 0 0 5px #ccc;
+            }
+            .slide {
+                position: absolute;
+                width: var(--slide-width);
+                height: var(--slide-height);
+                box-sizing: border-box;
+                transform: scale(var(--scale));
+                transform-origin: left top;
+                background-color: white;
+            }
+
+            html {
+                font-size: 32px;
+                font-family: "Noto Sans CJK JP", sans-serif;
+                color: #222;
+                /*cursor: none;*/
+            }
+            h1 {
+                font-size: 3rem;
+                margin: 1em auto;
+                text-align: center;
+            }
+            h2 {
+                font-size: 2.5rem;
+                margin: 1em auto;
+                text-decoration: underline;
+                text-underline-offset: .1em;
+            }
+            h3 {
+                font-size: 1.5em;
+                margin: 0 0 .75em;
+            }
+            h4 {
+                font-size: 1.1em;
+                margin: 0 0 .5em;
+            }
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+            p, ul, ol, dl, pre, figure {
+                margin-top: 0;
+            }
+            p, pre {
+                margin-bottom: .75em;
+            }
+            ul {
+                padding: 0;
+                list-style-type: none;
+            }
+            li > ul, ol {
+                font-size: 0.8em;
+                /*margin-top: .5em;*/
+                display: flex;
+                flex-flow: row wrap;
+                column-gap: 2em;
+                padding-left: 2em;
+            }
+            li > ul {
+                list-style-type: circle;
+            }
+            li > ol {
+                list-style-type: decimal;
+            }
+            li {
+                /*margin: 0 0 1em;*/
+                margin: .9em 0 0;
+                background-color: none;
+                transition: .3s;
+            }
+            li:first-child {
+                margin-top: 0;
+            }
+            li > ul > li:first-child {
+                margin-top: .9em;
+            }
+            li > ol > li:first-child {
+                margin-top: .9em;
+            }
+            dd {
+                margin-bottom: .9em;
+            }
+            li:last-child {
+                margin-bottom: 0;
+            }
+            li:hover {
+                background-color: #f1f1f1;
+                transition: .3s;
+            }
+            a {
+                color: #F27624;
+            }
+            pre {
+                color: white;
+                font-size: .7em;
+            }
+            code {
+                font-family: "Source Code Pro", monospace;
+                color: darkslategray;
+                padding: .1em .2em;
+            }
+            pre > code {
+                border-radius: 1em;
+            }
+            pre ::selection {
+                background-color: #575342;
+            }
+            .dark {
+                color: white;
+                background-color: #222;
+            }
+            .dark h2 {
+                color: white;
+            }
+            .slide {
+                --padding-top: 1rem;
+                --padding-left: 2rem;
+                padding: var(--padding-top) var(--padding-left);
+            }
+            .slide-title {
+                color: #000;
+            }
+            .slide-number {
+                position: absolute;
+                bottom: var(--padding-top);
+                right: var(--padding-left);
+                font-size: .75em;
+            }
+            .slide-body {
+                display: flex;
+                flex-flow: row wrap;
+                align-items: flex-start;
+                column-gap: 1em;
+            }
+            .slide-footnote {
+                position: absolute;
+                left: var(--padding-left);
+                bottom: var(--padding-top);
+                font-size: .6em;
+                list-style-type: square;
+                list-style-position: inside;
+                display: flex;
+                flex-flow: row wrap;
+                column-gap: 1.5em;
+            }
+            .slide-footnote li {
+                margin-top: 0;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slide-container">
+            <section class="slide">
+                <h1>いまから使えるJulia言語</h1>
+                <p><a href="https://akio-tomiya.github.io/julia_in_physics/" style="display: block; text-align: center;" target="_blank">Julia in Physics 2021 Online</a></p>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>本チュートリアルの目的</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>「時代はJuliaかもしれない」という気にさせる
+                            <ul>
+                                <li>速さだけがJuliaの良いところじゃない</li>
+                                <li>科学技術計算のためだけの言語じゃない</li>
+                            </ul>
+                        </li>
+                        <li>全然Juliaを知らない人の「ちょっと試してみよう」のハードルを下げる
+                            <ul>
+                                <li>まずはJuliaがどんな言語かをざっと紹介</li>
+                                <li>次にJuliaの構文や主な機能を解説</li>
+                                <li>最後に実用的なTipsを見る</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>宣伝</h3>
+                <div class="slide-body">
+                    <ul style="flex: 3;">
+                        <li>『<b>1から始める Juliaプログラミング</b>』発売中</li>
+                        <li>200ページ弱にJuliaのエッセンスをまとめた入門書</li>
+                        <li>科学技術計算を高速かつ手軽に行いたい学生や研究者向け</li>
+                        <li>おかげさまでAmazonレビューも高評価<img src="fig/AmazonReview.png"></li>
+                        <li><a href="https://www.coronasha.co.jp/np/isbn/9784339029055/" target="_blank">出版社ウェブサイト</a></li>
+                    </ul>
+                    <img style="flex: 1; display: block; width: 30%;" src="fig/juliabook.jpg">
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide dark">
+                <h2>Juliaとは</h2>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>現在までのJulia</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>2009年から開発されている動的プログラミング言語
+                            <ul>
+                                <li>2018年にバージョン1.0がリリース</li>
+                                <li>2021年9月現在の最新版はバージョン1.6.2</li>
+                                <li>もうすぐバージョン1.7のリリース</li>
+                            </ul>
+                        </li>
+                        <li>ここ数年で人気が急上昇
+                            <ul>
+                                <li>IEEE Spectrumの<a href="https://spectrum.ieee.org/top-programming-languages/" target="_blank">Top Programming Languages 2021</a>ランキングでは20位</li>
+                                <li>Stack Overflowの<a href="https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted" target="_blank">Developer Survey 2021</a>ではmost loved languagesで5位</li>
+                                <li>2019年にSIAMのJ. H. Wilkinson賞を<a href="https://sinews.siam.org/Details-Page/january-prize-spotlight-jeff-bezanson-steven-l-brunton-jack-dongarra-stefan-karpinski-and-viral-b-shah" target="_blank">Juliaの開発者らが受賞</a></li>
+                                <li>nature誌でも<a href="https://www.nature.com/articles/d41586-019-02310-3" target="_blank">特集記事</a>が組まれた</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>スクリプト言語として</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>事前コンパイルの必要なし</li>
+                        <li><code>julia script.jl</code>で即実行</li>
+                        <li><code>julia</code>コマンドで対話的実行</li>
+                        <li><a href="https://jupyter.org/" target="_blank">Jupyter</a>もサポート</li>
+                    </ul>
+                    <pre style="flex: 1; font-size: .65em;" class="language-plaintext"><code>$ cat script.jl 
+println("hello, world")
+$ julia script.jl 
+hello, world
+$ julia -q
+julia> A = randn(3, 3)
+3×3 Matrix{Float64}:
+ -0.378213   1.17271  0.646551
+ -0.318493  -0.25825  0.121042
+  0.822649   1.50609  1.01108
+
+julia> A'A  # 行列積
+3×3 Matrix{Float64}:
+ 0.921234  0.877702  0.548677
+ 0.877702  3.71027   2.24974
+ 0.548677  2.24974   1.45496
+
+julia> </code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>特徴</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>現代的な機能
+                            <ul>
+                                <li>自動メモリ管理</li>
+                                <li>ジェネリクス</li>
+                                <li>メタプログラミング</li>
+                            </ul>
+                        </li>
+                        <li>MATLAB風の構文
+                            <ul>
+                                <li><code>end</code>までがブロック</li>
+                                <li><code>2x</code>や<code>A'B</code>などの数学記法</li>
+                                <li><code>σ</code>などユニコード変数をサポート</li>
+                            </ul>
+                        </li>
+                        <li>高性能な実行時コンパイラ</li>
+                    </ul>
+                    <pre style="flex: 1; font-size: .65em;" class="language-julia"><code>
+# 1次元配列（Vector）は要素の型付き
+typeof([1, 2, 3])        #> Vector{Int64}
+typeof([1.0, 2.0, 3.0])  #> Vector{Float64}
+
+# マクロによるコードの書き換え
+x = 1
+@assert x > 0
+@assert x < 0  #! ERROR: AssertionError: x < 0
+
+# if … end のブロック
+if x > 0
+    println("x is positive")
+end
+
+# ユニコード変数
+μ, σ = -0.3, 1.2
+x = μ + randn() * σ  # 正規分布 N(μ, σ^2)
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <div class="slide-body">
+                    <div style="flex: 2;">
+                        <h3>クイックソートの実装例</h3>
+                        <ul>
+                            <li>どんなデータでも動く（generics）
+                                <ul>
+                                    <li>整数</li>
+                                    <li>浮動小数点数</li>
+                                    <li>文字列</li>
+                                    <li>etc.</li>
+                                </ul>
+                            </li>
+                            <li>データ型に応じて実行時コンパイル
+                                <ul>
+                                    <li>要素の型は入力から推論</li>
+                                    <li><code>isless</code>関数が要素の型に応じて特殊化</li>
+                                </ul>
+                            </li>
+                            <li>マクロを通じたヒント
+                                <ul>
+                                    <li><code>@inbounds</code>は境界チェックを省略</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre style="flex: 1; font-size: .55em;"><code class="language-julia">
+quicksort(xs) = quicksort!(copy(xs))
+quicksort!(xs) = quicksort!(xs, 1, length(xs))
+
+function quicksort!(xs, lo, hi)
+    if lo < hi
+        p = partition!(xs, lo, hi)
+        quicksort!(xs, lo, p - 1)
+        quicksort!(xs, p + 1, hi)
+    end
+    return xs
+end
+
+function partition!(xs, lo, hi)
+    pivot = div(lo + hi, 2)
+    pvalue = xs[pivot]
+    xs[pivot], xs[hi] = xs[hi], xs[pivot]
+    j = lo
+    @inbounds for i in lo:hi-1
+        if isless(xs[i], pvalue)
+            xs[i], xs[j] = xs[j], xs[i]
+            j += 1
+        end
+    end
+    xs[j], xs[hi] = xs[hi], xs[j]
+    return j
+end
+                    </code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>高機能な標準ライブラリ</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>豊富な数値型
+                            <ul>
+                                <li>{8, 16, 32, 64, 128}bit ✕ {符号付き, 符号なし}の整数</li>
+                                <li>16, 32, 64bitの浮動小数点数</li>
+                                <li>任意精度整数と浮動小数点数</li>
+                            </ul>
+                        </li>
+                        <li>線形代数
+                            <ul>
+                                <li>多次元配列<code>Array{T, n}</code>型</li>
+                                <li>LinearAlgebra.jl: 内積・行列積・線形方程式・行列分解など</li>
+                            </ul>
+                        </li>
+                        <li>Pkg.jl
+                            <ul>
+                                <li>高機能な標準パッケージマネジャ</li>
+                                <li>仮想環境の構築</li>
+                                <li>Cライブラリのバイナリ管理</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>グルー言語として</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>外部コマンドの実行
+                            <ul>
+                                <li>バッククォートでコマンドを作成</li>
+                                <li><code>run</code>や<code>eachline</code>で実行</li>
+                            </ul>
+                        </li>
+                        <li>C言語の呼出し
+                            <ul>
+                                <li><code>ccall</code>でCの関数を実行</li>
+                                <li>構造体型なども扱える</li>
+                            </ul>
+                        </li>
+                        <li><a href="https://github.com/JuliaPy/PyCall.jl" target="_blank">PyCall.jl</a>パッケージ</li>
+                    </ul>
+<pre style="flex: 1;"><code class="language-julia">
+# 外部コマンドの実行
+for path in eachline(`find . -name '*.txt'`)
+    # gzip <"$path" >"$path.gz"
+    run(pipeline(path, `gzip`, "$(path).gz"))
+end
+
+# C関数の呼出し
+ccall(:sin, Cdouble, (Cdouble,), 1.0)
+
+# Pythonの使用
+using PyCall
+optimize = pyimport("scipy.optimize")
+optimize.brentq(x -> x^2 - 2, 0, 2)  # x^2 = 2 の解
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>ベンチマーク：数独ソルバー</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>数独ソルバーでベンチマーク
+                            <ul>
+                                <li>アルゴリズムは単純なバックトラッキング</li>
+                                <li>簡単な問題と難しい問題の2種類で計測</li>
+                                <li><a href="https://gist.github.com/bicycle1885/9c53f04d4243ee6b99d96aa41d60a199" target="_blank">ソースコード</a></li>
+                            </ul>
+                        </li>
+                        <li>難しい問題ではJuliaが<b>圧倒的に高速</b>
+                            <ul>
+                                <li>easy.txt ⇨ 5倍遅い</li>
+                                <li>hard.txt ⇨ 85倍速い</li>
+                                <li>Juliaは起動は遅いが速度は速い</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <table style="flex: 1;">
+                            <caption>数独ベンチマーク結果</caption>
+                            <tbody style="text-align: right;">
+                                <tr><td></td><th scope="col">Julia</th><th scope="col">Python</th></tr>
+                                <tr><th scope="row">easy.txt</th><td>257.3 ㍉秒</td><td> 52.4 ㍉秒</td></tr>
+                                <tr><th scope="row">hard.txt</th><td>  5.1 　秒</td><td>438.2 　秒</td></tr>
+                            </tbody>
+                        </table>
+                        <figure style="flex: 1; margin: 1em auto;">
+                            <img src="fig/sudoku.svg" width="230">
+                        </figure>
+                    </div>
+                </div>
+                <ul class="slide-footnote">
+                    <li>Julia: 1.6.2</li>
+                    <li>Python: 3.9.6</li>
+                    <li>OS: Linux (Fedora 34)</li>
+                    <li>CPU: AMD Ryzen 9 3950X</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+<pre style="font-size: .6em;"><code class="language-julia">
+# Julia版の数独ソルバー
+function solve(puzzle)
+    next(i, j) = i < 9 ? (i + 1, j) : (1, j + 1)
+    function solveit(sol, pos)
+        i, j = pos
+        if j > 9
+            return true
+        elseif sol[i,j] > 0
+            return solveit(sol, next(i, j))
+        end
+        m, n = (i - 1) ÷ 3, (j - 1) ÷ 3
+        for k in 1:9
+            if all(sol[i,j] != k for i in 1:9) &&
+               all(sol[i,j] != k for j in 1:9) &&
+               all(sol[i,j] != k for j in 3n+1:3n+3,
+                                     i in 3m+1:3m+3)
+                sol[i,j] = k
+                solveit(sol, next(i, j)) && return true
+            end
+        end
+        sol[i,j] = 0
+        return false
+    end
+    sol = copy(puzzle)
+    return solveit(sol, (1, 1)) ? sol : nothing
+end
+</code></pre>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide dark">
+                <h2>セットアップ</h2>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>Juliaのインストール</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>Windows, macOS場合
+                            <ol>
+                                <li><a href="https://julialang.org/downloads/" target="_blank">公式サイト</a>からインストーラをダウンロード
+                                <li>ダウンロードしたインストーラを実行</li>
+                                <li>環境変数<code>PATH</code>に<code>julia</code>コマンドのあるディレクトリを加える</li>
+                            </ol>
+                        </li>
+                        <li>Linuxの場合
+                            <ol>
+                                <li><a href="https://julialang.org/downloads/" target="_blank">公式サイト</a>からバイナリをダウンロード</li>
+                                <li>ダウンロードしたTARボールを展開し、ファイルを適当な場所（<code>~/.local</code>など）にコピー</li>
+                                <li>環境変数<code>PATH</code>に<code>julia</code>コマンドのあるディレクトリを加える</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="slide-footnote" style="">
+                    <li>macOSはHomebrewの<a href="https://formulae.brew.sh/cask/julia" target="_blank">julia formula</a>でもOK</li>
+                    <li>FedoraやRHELはDNFでもOK</li>
+                    <li>UbuntuのAPTで入るJuliaは少し古い様子</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>どのJuliaを入れる？</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>公式がリリースするバイナリはいくつかある
+                            <ul>
+                                <li>Current stable release</li>
+                                <li>Long-term support (LTS)</li>
+                                <li>Upcoming release</li>
+                                <li>Nightly build</li>
+                            </ul>
+                        </li>
+                        <li>基本は<b>Current stable release</b>
+                            <ul>
+                                <li>最新かつ安定版</li>
+                                <li>多くのパッケージの最新版もこれはサポートしている</li>
+                                <li>LTSは安定しているが、機能が古くなりがち</li>
+                                <li>Upcoming releaseは新機能のお試し</li>
+                            </ul>
+                        </li>
+                        <li>なるべく<b>公式のバイナリ</b>がオススメ
+                            <ul>
+                                <li>トラブルが少なく、公式がサポートしている</li>
+                                <li>DNFやAPTは公式バイナリでない</li>
+                                <li>Homebrewは公式バイナリと同じ</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>REPLの使い方</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li><code>julia</code>コマンドでREPLを起動
+                            <ul><li>Ctrl+Dまたは<code>exit()</code>で終了</li></ul>
+                            <ul><li>Ctrl+P/Ctrl+Nで前後のコマンド表示</li></ul>
+                        </li>
+                        <li>主なREPLのモード
+                            <ul>
+                                <li><code style="color: limegreen; background-color: #222;">julia></code> Juliaモード（<code>Del</code>キー）</li>
+                                <li><code style="color: yellow; background-color: #222;">help?></code> ヘルプモード（<code>?</code>キー）</li>
+                                <li><code style="color: orangered; background-color: #222;">shell></code> シェルモード（<code>;</code>キー）</li>
+                                <li><code style="color: dodgerblue; background-color: #222;">pkg></code> パッケージ管理モード（<code>]</code>キー）</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <video controls width="500" style="flex: 1.1;">
+                        <source src="fig/REPL.webm" type="video/webm">
+                    </video>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide dark">
+                <h2>基本構文</h2>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>数値リテラル</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>小数点があれば浮動小数点数
+                            <ul>
+                                <li>整数は64bit符号付きがデフォルト</li>
+                                <li>浮動小数点数は倍精度がデフォルト</li>
+                            </ul>
+                        </li>
+                        <li>真偽値は二値論理で使用</li>
+                        <li><code>nothing</code>は意味のない値
+                            <ul>
+                                <li><code>println</code>関数の返り値など</li>
+                                <li>Pythonの<code>None</code>に相当</li>
+                                <li><code>missing</code>は「値がない」ことを表す値</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre style="flex: 1;"><code class="language-julia">
+# 数値
+42           # 整数
+3.14         # 浮動小数点数（小数表記）
+6.02e+23     # 浮動小数点数（指数表記）
+1.2 - 0.9im  # 複素数
+2//3         # 有理数
+
+# 真偽値
+true
+false
+
+# Nothing
+nothing
+
+# 欠損値
+missing
+                    </code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>配列 1/2</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li><code>[ … ]</code>で配列作成
+                            <ul>
+                                <li>1次元配列は列ベクトル</li>
+                                <li>2次元配列は行列</li>
+                            </ul>
+                        </li>
+                        <li>添字は1始まりが標準
+                            <ul>
+                                <li><code>begin</code>: 最初の要素</li>
+                                <li><code>end</code>: 最後の要素</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <table style="flex: 1; font-size: .7em;">
+                        <caption>配列操作関数</caption>
+                        <tbody>
+                            <tr><td><code>ndims</code></td><td>次元</td></tr>
+                            <tr><td><code>size</code></td><td>サイズ</td></tr>
+                            <tr><td><code>length</code></td><td>要素数</td></tr>
+                            <tr><td><code>zeros</code></td><td>ゼロ初期化配列</td></tr>
+                            <tr><td><code>copy</code></td><td>複製配列</td></tr>
+                            <tr><td><code>sum</code></td><td>総和</td></tr>
+                            <tr><td><code>minimum</code></td><td>最小値</td></tr>
+                            <tr><td><code>vcat</code></td><td>縦結合</td></tr>
+                            <tr><td><code>hcat</code></td><td>横結合</td></tr>
+                            <tr><td><code>fill!</code></td><td>全要素設定</td></tr>
+                            <tr><td><code>push!</code></td><td>要素追加</td></tr>
+                            <tr><td><code>pop!</code></td><td>要素削除</td></tr>
+                            <tr><td><code>sort!</code></td><td>整列</td></tr>
+                        </tbody>
+                    </table>
+<pre style="flex: 1;"><code class="language-julia">
+# 1次元配列（ベクトル）
+[1, 2, 3]
+
+# 2次元配列（行列）
+[1.0 2.0 3.0
+ 0.0 4.0 5.0
+ 0.0 0.0 6.0]
+
+# 要素の参照
+x = [10, 20, 30]
+x[1]      #> 10
+x[3]      #> 30
+x[begin]  #> 10
+x[end]    #> 30
+x[end-1]  #> 20
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>配列 2/2</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>配列は要素の型をパラメタとして持つ
+                            <ul>
+                                <li><code>Vector{T}</code>の<code>T</code>がパラメタ</li>
+                                <li><code>Vector{T}</code>は<code>Array{T, 1}</code>の別名</li>
+                                <li><code>Matrix{T}</code>は<code>Array{T, 2}</code>の別名</li>
+                            </ul>
+                        </li>
+                        <li>配列要素の型は値から推定される
+                            <ul>
+                                <li>空の配列のときは要素の型を指定可能</li>
+                                <li>空の配列ではデフォルトで<code>Any</code>型</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1;"><code class="language-julia">
+# 配列は要素の型を持つ
+typeof([0])    #> Vector{Int64}
+typeof([0.0])  #> Vector{Float64}
+
+# 要素の型を返すeltype関数
+eltype([0])    #> Int64
+eltype([0.0])  #> Float64
+
+# 空の配列
+Float64[]   # 浮動小数点数の1次元配列
+[]          # Any[] と同じ
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>タプル</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>複数の値を組にして扱う
+                            <ul>
+                                <li>値の型は任意</li>
+                                <li>個数も任意</li>
+                            </ul>
+                        </li>
+                        <li>2種類のタプル
+                            <ul>
+                                <li>名前無しタプル</li>
+                                <li>名前付きタプル</li>
+                            </ul>
+                        </li>
+                        <li>タプルは<b>不変</b> vs 配列は<b>可変</b>
+                            <ul>
+                                <li>タプルの要素は入れ替えられない</li>
+                                <li>タプルの長さは変えられない</li>
+                                <li>制約が強い代わりに軽量 ⇨ 関数から複数の値を返すときに使われる</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1;"><code class="language-julia">
+# 名前無しタプル
+t = ("Albert Einstein", 1879)
+t[1]  #> "Albert Einstein"
+t[2]  #> 1879
+
+# 名前付きタプル
+t = (name = "Albert Einstein", birth = 1879)
+t.name   #> "Albert Einstein"
+t.birth  #> 1879
+t[1]     #> "Albert Einstein"
+t[2]     #> 1879
+
+# 最大値とその位置を返すfindmax関数
+findmax([3.9, 5.2, 2.1, 4.0])  #> (5.2, 2)
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>基本演算</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>基本四則演算はPythonなどと同様
+                            <ul>
+                                <li><code>/</code>は浮動小数点数を返すので注意</li>
+                                <li>整数の商と剰余は<code>÷</code>と<code>%</code>を使う</li>
+                                <li>それぞれ<code>div</code>と<code>rem</code>と同じ</li>
+                            </ul>
+                        </li>
+                        <li>論理演算
+                            <ul>
+                                <li><code>!</code>: 否定</li>
+                                <li><code>|</code>: 論理和</li>
+                                <li><code>&</code>: 論理積</li>
+                            </ul>
+                        </li>
+                        <li>基本的な演算子も<b>関数</b>
+                            <ul>
+                                <li><code>2 + 3</code>も<code>+(2, 3)</code>も同じ</li>
+                                <li>演算子もオブジェクトとして受け渡し可能</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1;"><code class="language-julia">
+# 四則演算
+2 + 3  #> 5
+2 - 3  #> -1
+2 * 3  #> 6
+2 / 3  #> 0.6666666666666666
+
+# 商と剰余
+9 ÷ 2  #> 4  = div(9, 2)
+9 % 2  #> 1  = rem(9, 2)
+
+# 論理演算
+!true         #> false
+true | false  #> true
+true & false  #> false
+
+# 畳み込み演算
+foldl(+, [1, 2, 3], init = 0)  #> 6
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>分岐</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>条件分岐は<code>if …  elseif … else</code></li>
+                        <li>条件式は<b><code>Bool</code>型のみ</b>
+                            <ul>
+                                <li><code>false</code>か<code>true</code>のみが有効</li>
+                                <li><code>0</code>や<code>""</code>は使えないので注意</li>
+                            </ul>
+                        </li>
+                        <li>2つの短絡評価
+                            <ul>
+                                <li><code>x && y</code>は「<code>x</code>が真 iff <code>y</code>を評価」</li>
+                                <li><code>x || y</code>は「<code>x</code>が偽 iff <code>y</code>を評価」</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre style="flex: 1;"><code class="language-julia">
+# 条件分岐
+if x == 0
+    println("x is zero.")
+elseif x > 0
+    println("x is positive.")
+else
+    println("x is negative.")
+end
+
+# 条件演算子
+println(x < 0 ? "negative" : "nonnegative")
+
+# 短絡評価
+x > 0 && x < 10  # 0 < x < 10 と同じ
+x < 0 || x > 10
+                    </code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>反復</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li><code>start:stop</code>は範囲オブジェクト
+                            <ul>
+                                <li><code>start:step:stop</code>で間隔を変更できる</li>
+                                <li><code>step</code>を負の値にすれば逆順</li>
+                            </ul>
+                        </li>
+                        <li><code>for</code>や<code>while</code>ブロック内では<code>break</code>と<code>continue</code>が使える
+                            <ul>
+                                <li><code>break</code>: ループを抜ける</li>
+                                <li><code>continue</code>: ループの残りを飛ばす</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre style="flex: 1; font-size: .65em;"><code class="language-julia">
+# 範囲
+1:9    # 1, 2, …, 9
+1:2:9  # 1, 3, …, 9
+
+# for文
+for i in 1:9
+    println(i)
+end
+
+# 2重ループ
+for j in 1:9, i in 1:9
+    println(i, j)
+end
+
+# while文
+while true
+    println("yes")
+end
+</code></pre>
+                </div>
+                <ul class="slide-footnote">
+                    <li><code>for</code>の<code>in</code>は<code>=</code>や<code>∈</code>でもOK</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>関数定義</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>2種類の定義方法
+                            <ul>
+                                <li>数学記法に近い定義（1行定義）</li>
+                                <li><code>function</code>を使う定義</li>
+                            </ul>
+                        </li>
+                        <li><code>return</code>は省略可能
+                            <ul>
+                                <li>1行定義だと省略する人が多い</li>
+                            </ul>
+                        </li>
+                        <li>引数に型の制約をかけられる
+                            <ul>
+                                <li>後述する多重ディスパッチと関係</li>
+                            </ul>
+                        </li>
+                        <li><code>x -> x + 1</code>と書くと無名関数</li>
+                    </ul>
+                    <pre style="flex: 1;"><code class="language-julia">
+# 1行定義
+iseven(n) = n % 2 == 0
+
+# 標準的な定義
+function collatz(n::Integer)
+    steps = 0
+    while n != 1
+        if iseven(n)
+            n = n ÷ 2
+        else
+            n = 3n + 1
+        end
+        steps += 1
+    end
+    return steps
+end
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>構造体型</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>構造体型は複数のフィールドをまとめるデータ型
+                            <ul>
+                                <li>フィールドには型を指定可能</li>
+                                <li>フィールド数は0個以上</li>
+                            </ul>
+                        </li>
+                        <li>デフォルトの構造体は不変
+                            <ul>
+                                <li><code>mutable struct</code>に変えると可変な構造体</li>
+                                <li>通常は不変な構造体を推奨</li>
+                            </ul>
+                        </li>
+                        <li>コンストラクタは定義しなくてもOK</li>
+                    </ul>
+<pre style="flex: 1; font-size: .65em;"><code class="language-julia">
+# 2次元極座標
+struct PolarCoords
+    # フィールド
+    r::Float64
+    φ::Float64
+
+    # ユーザ定義コンストラクタ
+    function PolarCoords(r, φ)
+        r ≥ 0 || error("radius must be positive")
+        0 ≤ φ < 2π || error("angle must be in [0, 2π)")
+        return new(r, φ)
+    end
+end
+
+# PolarCoordsオブジェクトの作成
+p = PolarCoords(1.0, 2π/3)
+p.r, p.φ  #> (1.0, 2.0943951023931953)
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>パラメトリック構造体型</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>フィールドの型はパラメータ化可能
+                            <ul>
+                                <li>右の例の<code>T</code>がパラメータ</li>
+                                <li>複素数型<code>Complex{T}</code>もパラメトリック構造体型</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1; font-size: .65em;"><code class="language-julia">
+# 2次元極座標（パラメトリック版）
+struct PolarCoords{T}
+    # フィールド
+    r::T
+    φ::T
+
+    # ユーザ定義コンストラクタ
+    function PolarCoords(r::T, φ::T) where T
+        r ≥ 0 || error("radius must be positive")
+        0 ≤ φ < 2π || error("angle must be in [0, 2π)")
+        return new{T}(r, φ)
+    end
+    PolarCoords(r, φ) = PolarCoords(promote(r, φ)...)
+end
+
+# PolarCoordsオブジェクトの作成
+p = PolarCoords(1//2, 2//3)
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide dark">
+                <h2>基本機能</h2>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>型システム</h3>
+                <div class="slide-body">
+                    <div>
+                        <dl>
+                            <dt><b>抽象型（abstract type）</b></dt><dd>他の型を分類する型</dd>
+                            <dt><b>具象型（concrete type）</b></dt><dd>オブジェクトを作る型</dd>
+                        </dl>
+                        <ul>
+                            <li>抽象型と具象型で階層構造を取る
+                                <ul>
+                                    <li>抽象型が内部節</li>
+                                    <li>具象型が葉</li>
+                                    <li>根は<code>Any</code>抽象型</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre style="flex: auto;"><code class="language-julia">
+Integer  # 抽象型
+Int64    # 具象型
+Float64  # 具象型
+
+Int64   <: Integer  #> true
+Float64 <: Integer  #> false
+
+42  isa Int64    #> true
+42  isa Integer  #> true
+0.5 isa Float64  #> false
+0.5 isa Integer  #> false
+                    </code></pre>
+                    <img src="fig/types.svg"/>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>例：<code>Number</code>抽象型以下の階層</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>角丸の節が抽象型</li>
+                        <li>パラメトリック型（<code>Complex</code>など）は抽象型とも具象型とも言いにくい</li>
+                    </ul>
+                    <img style="max-width: 100%;" src="fig/numerictypes.svg">
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>多重ディスパッチ</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>関数は複数のメソッドを持つ
+                            <ul>
+                                <li>右の関数<code>f</code>には3つのメソッドがある</li>
+                                <li>Pythonでは「メソッド → クラス」なのに対し、Juliaでは「メソッド → 関数」の関係</li>
+                            </ul>
+                        </li>
+                        <li><b>引数の型に応じて実行されるメソッドが変わる</b>のが多重ディスパッチ
+                            <ul>
+                                <li>ユビキタスな機能（<code>*</code>関数さえも）</li>
+                                <li>多重とは、すべての引数がメソッド決定に関与するという意味</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1;"><code class="language-julia">
+# 関数fに3つのメソッドを定義
+f(x::Any) = "Any"
+f(x::Int64) = "Int64"
+f(x::Float64) = "Float64"
+
+# 関数呼出し
+f("a")  #> "Any"
+f(42)   #> "Int64"
+f(0.5)  #> "Float64"
+
+# Int * Intメソッドが呼び出される
+2 * 3  #> 6
+
+# Int * Vector{Int}メソッドが呼び出される
+2 * [4, 5, 6]  #> [8, 10, 12]
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>多重ディスパッチの応用例</h3>
+                <div class="slide-body">
+<p style="flex-basis: 100%;">
+    問題：<code>fit</code>関数を新しいデータ型<code>MyData</code>に拡張したい
+</p>
+<div style="flex: 1;">
+<h4>Python</h4>
+<pre><code class="language-python">
+# Python
+class Model:
+    def fit(self, data):
+        …
+</code></pre>
+<p><code>fit</code>関数の実装を書き換える</p>
+<pre><code class="language-python">
+def fit(self, data):
+    if isinstance(data, MyData):
+        …
+</code></pre>
+</div>
+<div style="flex: 1;">
+<h4>Julia</h4>
+<pre><code class="language-julia">
+# Julia
+struct Model … end
+
+function fit(mod::Model, data) … end
+</code></pre>
+<p><code>fit</code>関数に新しいメソッドを加える</p>
+<pre><code class="language-julia">
+function fit(mod::Model, data::MyData)
+    …
+end
+</code></pre>
+</div>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <ssection class="slide">
+                <h3>多重ディスパッチの実用例</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>極座標に演算を定義してみる
+                            <ul>
+                                <li>新しい関数を定義するときは普通に定義</li>
+                                <li>標準ライブラリ<code>Base</code>の関数を拡張するときは<code>Base.{関数名}</code>で定義</li>
+                            </ul>
+                        </li>
+                        <li>既存の関数をどんどん改造してよい
+                            <ul>
+                                <li>ただし、意味をあまり変えすぎないように</li>
+                                <li><a href="https://docs.julialang.org/en/v1/manual/style-guide/#Avoid-type-piracy" target="_blank">type piracy</a>もダメ</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre><code class="language-julia">
+# 極座標の回転（新しい関数の定義）
+rotate(p::PolarCoords, θ::Real) =
+    PolarCoords(p.r, mod(p.φ + θ, 2π))
+
+# 極座標のスカラ倍（関数の拡張）
+Base.:*(α::Real, p::PolarCoords)
+    = PolarCoords(α * p.r, p.φ)
+Base.:*(p::PolarCoords, α::Real)
+    = α * p
+
+# 極座標の和（練習問題）
+Base.:+(p1::PolarCoords,
+        p2::PolarCoords) = …
+</code></pre>
+                </div>
+                <ul class="slide-footnote">
+                    <li><code>*</code>などの演算子のときは<code>Base.:*</code>のようにコロンが必要だが、それ以外のときは必要ない</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide dark">
+                <h2>パッケージ管理</h2>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>Pkg.jl</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>標準のパッケージ管理ツール
+                            <ul>
+                                <li>パッケージの追加・更新・削除など</li>
+                                <li><code>~/.julia</code>以下にファイルを配置</li>
+                            </ul>
+                        </li>
+                        <li><code>]</code>キーを押下するとパッケージ管理モードに移行
+                            <ul>
+                                <li><code>status</code>: 状態を表示</li>
+                                <li><code>add</code>: パッケージを追加</li>
+                                <li><code>remove</code>: パッケージを削除</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre class="language-plaintext"><code>
+(@v1.6) pkg> status
+      Status `~/.julia/environments/v1.6/Project.toml`
+  [6e4b80f9] BenchmarkTools v1.1.1
+  [944b1d66] CodecZlib v0.7.0
+  [31c24e10] Distributions v0.25.11
+  …
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>パッケージ管理ファイル</h3>
+                <div class="slide-body">
+                    <p>ペアで使われる2つのパッケージ管理ファイル：</p>
+                    <dl>
+                        <dt><b>プロジェクトファイル</b>（<code>Project.toml</code>）</dt><dd>プロジェクトのメタ情報（バージョンや依存パッケージ等）を管理</dd>
+                        <dt><b>マニフェストファイル</b>（<code>Manifest.toml</code>）</dt><dd>使用するパッケージのバージョンやインストール位置などを記録</dd>
+                    </dl>
+                    <ul>
+                        <li><code>~/.julia/environments/v1.6/{Project, Manifest}.toml</code>がデフォルト（ユーザ固有）</li>
+                        <li>パッケージ管理コマンドで自動的に更新</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>プロジェクトのパッケージ管理</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>プロジェクトのパッケージ管理
+                            <ol>
+                                <li>プロジェクトのディレクトリに移動</li>
+                                <li>REPLを立ち上げてパッケージ管理モードに移行</li>
+                                <li><code>activate .</code>コマンドを実行して環境を有効化</li>
+                                <li>パッケージを追加・削除など</li>
+                            </ol>
+                        </li>
+                        <li>プロジェクトのパッケージ環境有効化
+                            <ul>
+                            <li><code>julia --project</code>でJuliaを実行 OR</li>
+                            <li><code>JULIA_PROJECT</code>環境変数を<code>@.</code>に設定</li></ul>
+                        </li>
+                        <li>プロジェクト固有の環境を作ってみる</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide dark">
+                <h2>Tips</h2>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>型推論と最適化</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>多重ディスパッチは<b>型推論</b>で決まる
+                            <ul>
+                                <li>関数に渡された引数から式の型を推論</li>
+                                <li>うまく書けばディスパッチのコストは無視できる</li>
+                                <li>型推論がうまくいくコードを書くことが性能を上げるためには重要</li>
+                            </ul>
+                        </li>
+                        <li>例：ループ内の<code>isless</code>関数呼出し
+                            <ul>
+                                <li><code>isless</code>関数は型に応じてディスパッチ</li>
+                                <li>周囲の文脈から引数の型は推論される</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1; font-size: .60em;"><code class="language-julia">
+function partition!(xs, lo, hi)
+    pivot = div(lo + hi, 2)
+    pvalue = xs[pivot]
+    xs[pivot], xs[hi] = xs[hi], xs[pivot]
+    j = lo
+    @inbounds for i in lo:hi-1
+        if isless(xs[i], pvalue)
+            xs[i], xs[j] = xs[j], xs[i]
+            j += 1
+        end
+    end
+    xs[j], xs[hi] = xs[hi], xs[j]
+    return j
+end
+
+# 型推論結果を表示
+code_typed(
+    partition!,
+    (Vector{Float32}, Int, Int),
+    optimize = false)
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>マルチスレッド計算</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>マルチスレッドの並列化
+                            <ul>
+                                <li><code>julia -t4</code>で4スレッドを起動</li>
+                                <li>タスク（<code>Task</code>型）というコルーチンを並列実行できる</li>
+                            </ul>
+                        </li>
+                        <li><code>Threads</code>モジュール
+                            <ul>
+                                <li><code>@spawn</code>: 並列実行タスクを起動</li>
+                                <li><code>@sync</code>: タスクを同期</li>
+                                <li><code>@threads</code>: forループを並列化</li>
+                            </ul>
+                        </li>
+                    </ul>
+<pre style="flex: 1;"><code class="language-julia">
+using .Threads: @threads, @spawn
+
+# fooとbarを並列実行
+@sync begin
+    @spawn foo()
+    @spawn bar()
+end
+
+# for文を並列実行
+@threads for i in 1:100
+    baz(i)
+end
+</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>まとめ</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li>Juliaはモダンな動的プログラミング言語
+                            <ul>
+                                <li>スクリプトを手軽に実行</li>
+                                <li>REPLやJupyterで対話的実行</li>
+                                <li>充実した標準ライブラリ</li>
+                            </ul>
+                        </li>
+                        <li>多重ディスパッチを中心パラダイムとした機能
+                            <ul>
+                                <li>四則演算から複雑な関数まで多重ディスパッチ</li>
+                                <li>ユーザ定義型への拡張も多重ディスパッチ</li>
+                                <li>型が推論できれば多重ディスパッチのコストはゼロ</li>
+                            </ul>
+                        </li>
+                        <li>優秀なパッケージ管理ツールを標準搭載
+                            <ul>
+                                <li>パッケージの追加・削除・更新もREPLから</li>
+                                <li>プロジェクト固有の仮想環境も構築可能</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!--
+        <svg id="cursor" style="position: fixed; pointer-events: none;" width="40" height="40">
+            <circle cx="20" cy="20" r="20" fill="yellow" opacity="0.5"/>
+            <circle cx="20" cy="20" r="5" fill="red" opacity="0.5"/>
+        </svg>
+        -->
+
+        <script>
+            function scaleSlide() {
+                // scale slides by changing the --scale CSS variable
+                let rect = document.documentElement.getBoundingClientRect();
+                let innerWidth = rect.width;
+                let innerHeight = rect.height;
+                let slideWidth = 1280;
+                let slideHeight = 720;
+                let scale = Math.min(innerWidth / slideWidth, innerHeight / slideHeight);
+                document.body.style.setProperty("--scale", scale);
+
+                // resize slide containers
+                let containers = document.getElementsByClassName("slide-container");
+                for (let i = 0; i < containers.length; i++) {
+                    let container = containers[i];
+                    let slide = container.firstElementChild;
+                    let rect = slide.getBoundingClientRect();
+                    container.style.width = `${rect.width}px`;
+                    container.style.height = `${rect.height}px`;
+                }
+            }
+
+            function clampNumber(n, lo, hi) {
+                return Math.min(Math.max(n, lo), hi);
+            }
+
+            function currentSlideNumber() {
+                let hash = window.location.hash;
+                if (!hash.match(/#\d+/))
+                    return null;
+                return clampNumber(parseInt(hash.substr(1)), 1, slides.length);
+            }
+
+            function jumpSlide(n) {
+                window.location.hash = `#${clampNumber(n, 1, slides.length)}`;
+            }
+
+            function keyShortcut(e) {
+                //console.log(e);
+                switch (e.key) {
+                    case "ArrowDown":
+                    case "j":
+                        e.preventDefault();
+                        jumpSlide(currentSlideNumber() + 1);
+                        break;
+                    case "ArrowUp":
+                    case "k":
+                        e.preventDefault();
+                        jumpSlide(currentSlideNumber() - 1);
+                        break;
+                }
+            }
+
+            // register event listeners
+            const slides = document.getElementsByClassName("slide");
+            window.addEventListener("resize", scaleSlide);
+            window.addEventListener("keydown", keyShortcut);
+            window.addEventListener("load", (e) => {
+                // number slides
+                for (let i = 0; i < slides.length; i++) {
+                    let slide = slides[i];
+                    slide.id = i + 1;
+                    let slideNumber = document.createElement("span");
+                    slideNumber.innerText = `${i + 1} / ${slides.length}`;
+                    slideNumber.classList.add("slide-number");
+                    slide.append(slideNumber);
+                }
+                if (currentSlideNumber() === null)
+                    window.location.hash = "#1";
+                jumpSlide(currentSlideNumber());
+                scaleSlide();
+            });
+            /*
+            window.addEventListener("mousemove", (e) => {
+                let cursor = document.getElementById("cursor");
+                cursor.style.left = `${e.clientX - parseInt(cursor.getAttribute("width")) / 2}px`;
+                cursor.style.top = `${e.clientY - parseInt(cursor.getAttribute("height")) / 2}px`;
+            });
+            */
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/languages/julia.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/languages/python.min.js"></script>
+        <script>
+            {
+                let codeElements = document.getElementsByTagName("code");
+                for (let i = 0; i < codeElements.length; i++) {
+                    let code = codeElements[i];
+                    code.innerHTML = code.innerText.trim();
+                }
+            }
+            hljs.highlightAll();
+        </script>
+    </body>
+</html>
