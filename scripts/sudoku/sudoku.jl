@@ -3,12 +3,11 @@
 
 function solve(puzzle)
     next(i, j) = i < 9 ? (i + 1, j) : (1, j + 1)
-    function solveit(sol, pos)
-        i, j = pos
+    function solved(sol, i, j)
         if j > 9
             return true
         elseif sol[i,j] > 0
-            return solveit(sol, next(i, j))
+            return solved(sol, next(i, j)...)
         end
         m, n = (i - 1) ÷ 3, (j - 1) ÷ 3
         for k in 1:9
@@ -17,14 +16,14 @@ function solve(puzzle)
                all(sol[i,j] != k for j in 3n+1:3n+3,
                                      i in 3m+1:3m+3)
                 sol[i,j] = k
-                solveit(sol, next(i, j)) && return true
+                solved(sol, next(i, j)...) && return true
             end
         end
         sol[i,j] = 0
         return false
     end
     sol = copy(puzzle)
-    return solveit(sol, (1, 1)) ? sol : nothing
+    return solved(sol, 1, 1) ? sol : nothing
 end
 
 function load(file)
