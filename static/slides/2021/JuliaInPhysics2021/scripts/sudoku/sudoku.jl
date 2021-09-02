@@ -41,12 +41,14 @@ function load(file)
     return puzzle
 end
 
-puz = load(stdin)
-sol = solve(puz)
-if sol === nothing
-    println("no solution")
-else
-    for i in 1:9
-        println(join(sol[i,:], ' '))
+if abspath(PROGRAM_FILE) == @__FILE__
+    puz = load(stdin)
+    sol = solve(puz)
+    if sol === nothing
+        println("no solution")
+    else
+        for i in 1:9
+            println(join(sol[i,:], ' '))
+        end
     end
 end

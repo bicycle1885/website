@@ -20,19 +20,19 @@
                 background-color: #eee;
                 width: 100%;
                 height: 100%;
+                line-height: 1.25;
             }
             .slide-container {
-                margin: 10px auto;
-                box-shadow: 0 0 5px #ccc;
             }
             .slide {
-                position: absolute;
+                position: relative;
                 width: var(--slide-width);
                 height: var(--slide-height);
                 box-sizing: border-box;
                 transform: scale(var(--scale));
                 transform-origin: left top;
                 background-color: white;
+                box-shadow: 0 0 5px #ccc;
             }
 
             html {
@@ -108,7 +108,7 @@
             li:last-child {
                 margin-bottom: 0;
             }
-            li:hover {
+            li:hover, tr:hover {
                 background-color: #f1f1f1;
                 transition: .3s;
             }
@@ -127,8 +127,8 @@
             pre > code {
                 border-radius: 1em;
             }
-            pre ::selection {
-                background-color: #575342;
+            ::selection {
+                background-color: rgba(50, 205, 50, 0.25);
             }
             .dark {
                 color: white;
@@ -187,17 +187,24 @@
                 <h3>本チュートリアルの目的</h3>
                 <div class="slide-body">
                     <ul>
-                        <li>「時代はJuliaかもしれない」という気にさせる
+                        <li><b>「時代はJuliaかもしれない」</b>という気にさせる
                             <ul>
                                 <li>速さだけがJuliaの良いところじゃない</li>
                                 <li>科学技術計算のためだけの言語じゃない</li>
                             </ul>
                         </li>
-                        <li>全然Juliaを知らない人の「ちょっと試してみよう」のハードルを下げる
+                        <li>全然Juliaを知らない人の<b>「ちょっと試してみよう」のハードルを下げる</b>
                             <ul>
                                 <li>まずはJuliaがどんな言語かをざっと紹介</li>
                                 <li>次にJuliaの構文や主な機能を解説</li>
                                 <li>最後に実用的なTipsを見る</li>
+                            </ul>
+                        </li>
+                        <li>分量が多いので全て詳しくは説明できない
+                            <ul>
+                                <li>あとで参考にできるよう多めに書いてある</li>
+                                <li>詳しくは参考資料を参照</li>
+                                <li>この資料は公開されます</li>
                             </ul>
                         </li>
                     </ul>
@@ -236,7 +243,7 @@
                             <ul>
                                 <li>2018年にバージョン1.0がリリース</li>
                                 <li>2021年9月現在の最新版はバージョン1.6.2</li>
-                                <li>もうすぐバージョン1.7のリリース</li>
+                                <li>もうすぐバージョン1.7のリリース？</li>
                             </ul>
                         </li>
                         <li>ここ数年で人気が急上昇
@@ -293,7 +300,7 @@ julia> </code></pre>
                             <ul>
                                 <li>自動メモリ管理</li>
                                 <li>ジェネリクス</li>
-                                <li>メタプログラミング</li>
+                                <li>メタプログラミング（マクロ）</li>
                             </ul>
                         </li>
                         <li>MATLAB風の構文
@@ -330,31 +337,29 @@ x = μ + randn() * σ  # 正規分布 N(μ, σ^2)
 
         <div class="slide-container">
             <section class="slide">
+                <h3>クイックソートの実装例</h3>
                 <div class="slide-body">
-                    <div style="flex: 2;">
-                        <h3>クイックソートの実装例</h3>
-                        <ul>
-                            <li>どんなデータでも動く（generics）
-                                <ul>
-                                    <li>整数</li>
-                                    <li>浮動小数点数</li>
-                                    <li>文字列</li>
-                                    <li>etc.</li>
-                                </ul>
-                            </li>
-                            <li>データ型に応じて実行時コンパイル
-                                <ul>
-                                    <li>要素の型は入力から推論</li>
-                                    <li><code>isless</code>関数が要素の型に応じて特殊化</li>
-                                </ul>
-                            </li>
-                            <li>マクロを通じたヒント
-                                <ul>
-                                    <li><code>@inbounds</code>は境界チェックを省略</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul style="flex: 1;">
+                        <li>どんなデータでも動く（generics）
+                            <ul>
+                                <li>整数</li>
+                                <li>浮動小数点数</li>
+                                <li>文字列</li>
+                                <li>etc.</li>
+                            </ul>
+                        </li>
+                        <li>データ型に応じて実行時コンパイル
+                            <ul>
+                                <li>要素の型は入力から推論</li>
+                                <li><code>isless</code>関数が要素の型に応じて特殊化</li>
+                            </ul>
+                        </li>
+                        <li>マクロを通じた最適化ヒント
+                            <ul>
+                                <li><code>@inbounds</code>は境界チェックを省略</li>
+                            </ul>
+                        </li>
+                    </ul>
                     <pre style="flex: 1; font-size: .55em;"><code class="language-julia">
 quicksort(xs) = quicksort!(copy(xs))
 quicksort!(xs) = quicksort!(xs, 1, length(xs))
@@ -558,7 +563,7 @@ end
                         </li>
                     </ul>
                 </div>
-                <ul class="slide-footnote" style="">
+                <ul class="slide-footnote">
                     <li>macOSはHomebrewの<a href="https://formulae.brew.sh/cask/julia" target="_blank">julia formula</a>でもOK</li>
                     <li>FedoraやRHELはDNFでもOK</li>
                     <li>UbuntuのAPTで入るJuliaは少し古い様子</li>
@@ -637,8 +642,8 @@ end
                     <ul style="flex: 1;">
                         <li>小数点があれば浮動小数点数
                             <ul>
-                                <li>整数は64bit符号付きがデフォルト</li>
-                                <li>浮動小数点数は倍精度がデフォルト</li>
+                                <li>整数は<b>64bit符号付き</b>がデフォルト</li>
+                                <li>浮動小数点数は<b>倍精度</b>がデフォルト</li>
                             </ul>
                         </li>
                         <li>真偽値は二値論理で使用</li>
@@ -669,6 +674,9 @@ nothing
 missing
                     </code></pre>
                 </div>
+                <ul class="slide-footnote">
+                    <li>整数のサイズは環境によって変わる</li>
+                </ul>
             </section>
         </div>
 
@@ -996,8 +1004,8 @@ end
                     <ul style="flex: 1;">
                         <li>構造体型は複数のフィールドをまとめるデータ型
                             <ul>
-                                <li>フィールドには型を指定可能</li>
                                 <li>フィールド数は0個以上</li>
+                                <li>フィールドには型を指定可能</li>
                             </ul>
                         </li>
                         <li>デフォルトの構造体は不変
@@ -1006,18 +1014,18 @@ end
                                 <li>通常は不変な構造体を推奨</li>
                             </ul>
                         </li>
-                        <li>コンストラクタは定義しなくてもOK</li>
+                        <li>コンストラクタは定義しなくてもOK ⇨ デフォルトコンストラクタ</li>
                     </ul>
 <pre style="flex: 1; font-size: .65em;"><code class="language-julia">
-# 2次元極座標
+# 2次元極座標の構造体型
 struct PolarCoords
     # フィールド
-    r::Float64
-    φ::Float64
+    r::Float64  # radius
+    φ::Float64  # angle
 
     # ユーザ定義コンストラクタ
     function PolarCoords(r, φ)
-        r ≥ 0 || error("radius must be positive")
+        r ≥ 0 || error("radius must be non-negative")
         0 ≤ φ < 2π || error("angle must be in [0, 2π)")
         return new(r, φ)
     end
@@ -1039,20 +1047,28 @@ p.r, p.φ  #> (1.0, 2.0943951023931953)
                         <li>フィールドの型はパラメータ化可能
                             <ul>
                                 <li>右の例の<code>T</code>がパラメータ</li>
-                                <li>複素数型<code>Complex{T}</code>もパラメトリック構造体型</li>
+                                <li><code>T</code>はどんな型にもなれる</li>
+                            </ul>
+                        </li>
+                        <li>性能を損なわずデータ型の柔軟性が向上
+                            <ul>
+                                <li>複素数型：<code>Complex{T}</code></li>
+                                <li>配列型：<code>Array{T, n}</code></li>
+                                <li>辞書型：<code>Dict{K, V}</code></li>
+                                <li>など</li>
                             </ul>
                         </li>
                     </ul>
 <pre style="flex: 1; font-size: .65em;"><code class="language-julia">
-# 2次元極座標（パラメトリック版）
+# 2次元極座標の構造体型（パラメトリック版）
 struct PolarCoords{T}
     # フィールド
-    r::T
-    φ::T
+    r::T        # radius
+    φ::T        # angle
 
     # ユーザ定義コンストラクタ
     function PolarCoords(r::T, φ::T) where T
-        r ≥ 0 || error("radius must be positive")
+        r ≥ 0 || error("radius must be non-negative")
         0 ≤ φ < 2π || error("angle must be in [0, 2π)")
         return new{T}(r, φ)
     end
@@ -1082,7 +1098,7 @@ p = PolarCoords(1//2, 2//3)
                             <dt><b>具象型（concrete type）</b></dt><dd>オブジェクトを作る型</dd>
                         </dl>
                         <ul>
-                            <li>抽象型と具象型で階層構造を取る
+                            <li>抽象型と具象型で<b>木構造</b>を取る
                                 <ul>
                                     <li>抽象型が内部節</li>
                                     <li>具象型が葉</li>
@@ -1203,7 +1219,7 @@ end
         </div>
 
         <div class="slide-container">
-            <ssection class="slide">
+            <section class="slide">
                 <h3>多重ディスパッチの実用例</h3>
                 <div class="slide-body">
                     <ul style="flex: 1;">
@@ -1328,6 +1344,53 @@ Base.:+(p1::PolarCoords,
 
         <div class="slide-container">
             <section class="slide">
+                <h3>LaTeX記法入力</h3>
+                <div class="slide-body">
+                    <ul style="flex: 1;">
+                        <li>ギリシャ文字などはLaTeX記法で入力可能
+                            <ul>
+                                <li>REPLで<code>\sigma</code>の直後にTabキーを押すと、<code>σ</code>に変換される</li>
+                                <li>意味が定義されている記号もある（例えば<code>≈</code>は<code>isapprox</code>関数の別名）</li>
+                            </ul>
+                        </li>
+                        <li>VS Code, Vim, Emacs, Jupyterなどでも
+                            <ul>
+                                <li>ただしJulia用プラグインが必要</li>
+                                <li><a href="https://www.julia-vscode.org/" target="_blank">Julia for VS Code</a></li>
+                                <li><a href="https://github.com/JuliaEditorSupport/julia-vim" target="_blank">julia-vim</a></li>
+                                <li><a href="https://github.com/JuliaEditorSupport/julia-emacs" target="_blank">julia-emacs</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="flex: 1;">
+<pre><code class="language-plaintext">
+julia> \sigma  # ← ここでTabキーを押下
+
+julia> σ       # ← このようになる
+
+julia> 1.0 ≈ 1.00000001  # isapprox
+true
+</code></pre>
+<table style="font-size: .7em; min-width: 250px; margin: 0 auto;">
+    <caption>主なLaTeXコマンド</caption>
+    <tbody>
+        <tr><td>\div</td><td><code>÷</code></td></tr>
+        <tr><td>\approx</td><td><code>≈</code></td></tr>
+        <tr><td>\equiv</td><td><code>≡</code></td></tr>
+        <tr><td>\in</td><td><code>∈</code></td></tr>
+        <tr><td>\notin</td><td><code>∉</code></td></tr>
+        <tr><td>\subseteq</td><td><code>⊆</code></td></tr>
+        <tr><td>\cap</td><td><code>∩</code></td></tr>
+        <tr><td>\cup</td><td><code>∪</code></td></tr>
+    </tbody>
+</table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
                 <h3>型推論と最適化</h3>
                 <div class="slide-body">
                     <ul style="flex: 1;">
@@ -1438,6 +1501,19 @@ end
             </section>
         </div>
 
+        <div class="slide-container">
+            <section class="slide">
+                <h3>参考資料</h3>
+                <div class="slide-body">
+                    <ul>
+                        <li><a href="https://docs.julialang.org/en/v1/" target="_blank">公式マニュアル</a></li>
+                        <li><a href="https://github.com/bicycle1885/Julia-Tutorial" target="_blank">Julia高速チュートリアル</a></li>
+                        <li><a href="https://www.coronasha.co.jp/np/isbn/9784339029055/">『1から始める Juliaプログラミング』（コロナ社）</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
         <!--
         <svg id="cursor" style="position: fixed; pointer-events: none;" width="40" height="40">
             <circle cx="20" cy="20" r="20" fill="yellow" opacity="0.5"/>
@@ -1456,14 +1532,17 @@ end
                 let scale = Math.min(innerWidth / slideWidth, innerHeight / slideHeight);
                 document.body.style.setProperty("--scale", scale);
 
-                // resize slide containers
+                // resize slide containers and relocate slides
                 let containers = document.getElementsByClassName("slide-container");
                 for (let i = 0; i < containers.length; i++) {
                     let container = containers[i];
                     let slide = container.firstElementChild;
-                    let rect = slide.getBoundingClientRect();
-                    container.style.width = `${rect.width}px`;
-                    container.style.height = `${rect.height}px`;
+                    let slideRect = slide.getBoundingClientRect();
+                    container.id = i + 1;
+                    container.style.width = `${innerWidth}px`;
+                    container.style.height = `${innerHeight}px`;
+                    slide.style.top  = `${Math.max((innerHeight - slideRect.height) / 2, 0)}px`;
+                    slide.style.left = `${Math.max((innerWidth  - slideRect.width)  / 2, 0)}px`;
                 }
             }
 
@@ -1506,7 +1585,6 @@ end
                 // number slides
                 for (let i = 0; i < slides.length; i++) {
                     let slide = slides[i];
-                    slide.id = i + 1;
                     let slideNumber = document.createElement("span");
                     slideNumber.innerText = `${i + 1} / ${slides.length}`;
                     slideNumber.classList.add("slide-number");
