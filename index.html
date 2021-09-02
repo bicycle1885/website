@@ -469,7 +469,7 @@ optimize.brentq(x -> x^2 - 2, 0, 2)  # x^2 = 2 の解
                             <ul>
                                 <li>アルゴリズムは単純なバックトラッキング</li>
                                 <li>簡単な問題と難しい問題の2種類で計測</li>
-                                <li><a href="https://gist.github.com/bicycle1885/9c53f04d4243ee6b99d96aa41d60a199" target="_blank">ソースコード</a></li>
+                                <li><a href="https://github.com/bicycle1885/website/tree/master/static/slides/2021/JuliaInPhysics2021/scripts/sudoku" target="_blank">ソースコード</a></li>
                             </ul>
                         </li>
                         <li>難しい問題ではJuliaが<b>圧倒的に高速</b>
@@ -509,12 +509,11 @@ optimize.brentq(x -> x^2 - 2, 0, 2)  # x^2 = 2 の解
 # Julia版の数独ソルバー
 function solve(puzzle)
     next(i, j) = i < 9 ? (i + 1, j) : (1, j + 1)
-    function solveit(sol, pos)
-        i, j = pos
+    function solved(sol, i, j)
         if j > 9
             return true
         elseif sol[i,j] > 0
-            return solveit(sol, next(i, j))
+            return solved(sol, next(i, j)...)
         end
         m, n = (i - 1) ÷ 3, (j - 1) ÷ 3
         for k in 1:9
@@ -523,14 +522,14 @@ function solve(puzzle)
                all(sol[i,j] != k for j in 3n+1:3n+3,
                                      i in 3m+1:3m+3)
                 sol[i,j] = k
-                solveit(sol, next(i, j)) && return true
+                solved(sol, next(i, j)...) && return true
             end
         end
         sol[i,j] = 0
         return false
     end
     sol = copy(puzzle)
-    return solveit(sol, (1, 1)) ? sol : nothing
+    return solved(sol, 1, 1) ? sol : nothing
 end
 </code></pre>
             </section>
@@ -1023,7 +1022,7 @@ struct PolarCoords
     r::Float64  # radius
     φ::Float64  # angle
 
-    # ユーザ定義コンストラクタ
+    # ユーザ定義コンストラクタ（オブジェクトを作る関数）
     function PolarCoords(r, φ)
         r ≥ 0 || error("radius must be non-negative")
         0 ≤ φ < 2π || error("angle must be in [0, 2π)")
@@ -1066,7 +1065,7 @@ struct PolarCoords{T}
     r::T        # radius
     φ::T        # angle
 
-    # ユーザ定義コンストラクタ
+    # ユーザ定義コンストラクタ（オブジェクトを作る関数）
     function PolarCoords(r::T, φ::T) where T
         r ≥ 0 || error("radius must be non-negative")
         0 ≤ φ < 2π || error("angle must be in [0, 2π)")
@@ -1100,8 +1099,8 @@ p = PolarCoords(1//2, 2//3)
                         <ul>
                             <li>抽象型と具象型で<b>木構造</b>を取る
                                 <ul>
-                                    <li>抽象型が内部節</li>
-                                    <li>具象型が葉</li>
+                                    <li>内部節が抽象型</li>
+                                    <li>葉が具象型</li>
                                     <li>根は<code>Any</code>抽象型</li>
                                 </ul>
                             </li>
@@ -1158,14 +1157,14 @@ Float64 <: Integer  #> false
                     </ul>
 <pre style="flex: 1;"><code class="language-julia">
 # 関数fに3つのメソッドを定義
-f(x::Any) = "Any"
-f(x::Int64) = "Int64"
+f(x::Int64)   = "Int64"
 f(x::Float64) = "Float64"
+f(x::Integer) = "Integer"
 
 # 関数呼出し
-f("a")  #> "Any"
-f(42)   #> "Int64"
-f(0.5)  #> "Float64"
+f(42)    #> "Int64"
+f(0.5)   #> "Float64"
+f(true)  #> "Integer"
 
 # Int * Intメソッドが呼び出される
 2 * 3  #> 6
@@ -1173,47 +1172,6 @@ f(0.5)  #> "Float64"
 # Int * Vector{Int}メソッドが呼び出される
 2 * [4, 5, 6]  #> [8, 10, 12]
 </code></pre>
-                </div>
-            </section>
-        </div>
-
-        <div class="slide-container">
-            <section class="slide">
-                <h3>多重ディスパッチの応用例</h3>
-                <div class="slide-body">
-<p style="flex-basis: 100%;">
-    問題：<code>fit</code>関数を新しいデータ型<code>MyData</code>に拡張したい
-</p>
-<div style="flex: 1;">
-<h4>Python</h4>
-<pre><code class="language-python">
-# Python
-class Model:
-    def fit(self, data):
-        …
-</code></pre>
-<p><code>fit</code>関数の実装を書き換える</p>
-<pre><code class="language-python">
-def fit(self, data):
-    if isinstance(data, MyData):
-        …
-</code></pre>
-</div>
-<div style="flex: 1;">
-<h4>Julia</h4>
-<pre><code class="language-julia">
-# Julia
-struct Model … end
-
-function fit(mod::Model, data) … end
-</code></pre>
-<p><code>fit</code>関数に新しいメソッドを加える</p>
-<pre><code class="language-julia">
-function fit(mod::Model, data::MyData)
-    …
-end
-</code></pre>
-</div>
                 </div>
             </section>
         </div>
@@ -1255,6 +1213,47 @@ Base.:+(p1::PolarCoords,
                 <ul class="slide-footnote">
                     <li><code>*</code>などの演算子のときは<code>Base.:*</code>のようにコロンが必要だが、それ以外のときは必要ない</li>
                 </ul>
+            </section>
+        </div>
+
+        <div class="slide-container">
+            <section class="slide">
+                <h3>多重ディスパッチの応用例</h3>
+                <div class="slide-body">
+<p style="flex-basis: 100%;">
+    問題：<code>fit</code>関数を新しいデータ型<code>MyData</code>に拡張したい
+</p>
+<div style="flex: 1;">
+<h4>Pythonの場合</h4>
+<pre><code class="language-python">
+# Python
+class Model:
+    def fit(self, data):
+        …
+</code></pre>
+<p><code>fit</code>関数の<b>実装を書き換える</b></p>
+<pre><code class="language-python">
+def fit(self, data):
+    if isinstance(data, MyData):
+        …
+</code></pre>
+</div>
+<div style="flex: 1;">
+<h4>Juliaの場合</h4>
+<pre><code class="language-julia">
+# Julia
+struct Model … end
+
+function fit(mod::Model, data) … end
+</code></pre>
+<p><code>fit</code>関数に<b>新しいメソッドを加える</b></p>
+<pre><code class="language-julia">
+function fit(mod::Model, data::MyData)
+    …
+end
+</code></pre>
+</div>
+                </div>
             </section>
         </div>
 
@@ -1485,6 +1484,7 @@ end
                         </li>
                         <li>多重ディスパッチを中心パラダイムとした機能
                             <ul>
+                                <li>関数は型に応じた複数のメソッド（実装）を持つ</li>
                                 <li>四則演算から複雑な関数まで多重ディスパッチ</li>
                                 <li>ユーザ定義型への拡張も多重ディスパッチ</li>
                                 <li>型が推論できれば多重ディスパッチのコストはゼロ</li>
