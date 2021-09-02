@@ -66,11 +66,12 @@ def load(file):
         puzzle.append(row)
     return puzzle
 
-import sys
-puz = load(sys.stdin)
-sol = solve(puz)
-if not sol:
-    print("no solution")
-else:
-    for i in range(9):
-        print(' '.join(map(str, sol[i])))
+if __name__ == '__main__':
+    import sys
+    puz = load(sys.stdin)
+    sol = solve(puz)
+    if not sol:
+        print("no solution")
+    else:
+        for i in range(9):
+            print(' '.join(map(str, sol[i])))
