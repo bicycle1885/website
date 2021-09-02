@@ -23,17 +23,16 @@
                 line-height: 1.25;
             }
             .slide-container {
-                margin: 10px auto;
-                box-shadow: 0 0 5px #ccc;
             }
             .slide {
-                position: absolute;
+                position: relative;
                 width: var(--slide-width);
                 height: var(--slide-height);
                 box-sizing: border-box;
                 transform: scale(var(--scale));
                 transform-origin: left top;
                 background-color: white;
+                box-shadow: 0 0 5px #ccc;
             }
 
             html {
@@ -1457,14 +1456,17 @@ end
                 let scale = Math.min(innerWidth / slideWidth, innerHeight / slideHeight);
                 document.body.style.setProperty("--scale", scale);
 
-                // resize slide containers
+                // resize slide containers and relocate slides
                 let containers = document.getElementsByClassName("slide-container");
                 for (let i = 0; i < containers.length; i++) {
                     let container = containers[i];
                     let slide = container.firstElementChild;
-                    let rect = slide.getBoundingClientRect();
-                    container.style.width = `${rect.width}px`;
-                    container.style.height = `${rect.height}px`;
+                    let slideRect = slide.getBoundingClientRect();
+                    container.id = i + 1;
+                    container.style.width = `${innerWidth}px`;
+                    container.style.height = `${innerHeight}px`;
+                    slide.style.top  = `${Math.max((innerHeight - slideRect.height) / 2, 0)}px`;
+                    slide.style.left = `${Math.max((innerWidth  - slideRect.width)  / 2, 0)}px`;
                 }
             }
 
@@ -1507,7 +1509,6 @@ end
                 // number slides
                 for (let i = 0; i < slides.length; i++) {
                     let slide = slides[i];
-                    slide.id = i + 1;
                     let slideNumber = document.createElement("span");
                     slideNumber.innerText = `${i + 1} / ${slides.length}`;
                     slideNumber.classList.add("slide-number");
