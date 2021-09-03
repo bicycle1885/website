@@ -1202,10 +1202,9 @@ rotate(p::PolarCoords, θ::Real) =
     PolarCoords(p.r, mod(p.φ + θ, 2π))
 
 # 極座標のスカラ倍（関数の拡張）
-Base.:*(α::Real, p::PolarCoords)
-    = PolarCoords(α * p.r, p.φ)
-Base.:*(p::PolarCoords, α::Real)
-    = α * p
+Base.:*(α::Real, p::PolarCoords) =
+    PolarCoords(α * p.r, p.φ)
+Base.:*(p::PolarCoords, α::Real) = α * p
 
 # 極座標の和（練習問題）
 Base.:+(p1::PolarCoords,
