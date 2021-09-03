@@ -20,7 +20,6 @@
                 background-color: #eee;
                 width: 100%;
                 height: 100%;
-                line-height: 1.25;
             }
             .slide-container {
             }
@@ -39,6 +38,7 @@
                 font-size: 32px;
                 font-family: "Noto Sans CJK JP", sans-serif;
                 color: #222;
+                line-height: 1.25;
                 /*cursor: none;*/
             }
             h1 {
@@ -1109,9 +1109,11 @@ p = PolarCoords(1//2, 2//3)
                     <pre style="flex: auto;"><code class="language-julia">
 Integer  # 抽象型
 Int64    # 具象型
+UInt8    # 具象型
 Float64  # 具象型
 
 Int64   <: Integer  #> true
+UInt8   <: Integer  #> true
 Float64 <: Integer  #> false
 
 42  isa Int64    #> true
@@ -1187,7 +1189,7 @@ f(true)  #> "Integer"
                                 <li>標準ライブラリ<code>Base</code>の関数を拡張するときは<code>Base.{関数名}</code>で定義</li>
                             </ul>
                         </li>
-                        <li>既存の関数をどんどん改造してよい
+                        <li>既存の関数をどんどん拡張してよい
                             <ul>
                                 <li>ただし、意味をあまり変えすぎないように</li>
                                 <li><a href="https://docs.julialang.org/en/v1/manual/style-guide/#Avoid-type-piracy" target="_blank">type piracy</a>もダメ</li>
