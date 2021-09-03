@@ -195,6 +195,7 @@
                         </li>
                         <li>全然Juliaを知らない人の<b>「ちょっと試してみよう」のハードルを下げる</b>
                             <ul>
+                                <li>事前アンケートによると約半数がJuliaを使ったことがない</li>
                                 <li>まずはJuliaがどんな言語かをざっと紹介</li>
                                 <li>次にJuliaの構文や主な機能を解説</li>
                                 <li>最後に実用的なTipsを見る</li>
@@ -1093,10 +1094,11 @@ p = PolarCoords(1//2, 2//3)
                 <div class="slide-body">
                     <div>
                         <dl>
-                            <dt><b>抽象型（abstract type）</b></dt><dd>他の型を分類する型</dd>
-                            <dt><b>具象型（concrete type）</b></dt><dd>オブジェクトを作る型</dd>
+                            <dt><b>抽象型（abstract type）</b></dt><dd>他の型をグルーピングする型</dd>
+                            <dt><b>具象型（concrete type）</b></dt><dd>実際にオブジェクトを作る型</dd>
                         </dl>
                         <ul>
+                            <li>抽象型は下位の型を持てる</li>
                             <li>抽象型と具象型で<b>木構造</b>を取る
                                 <ul>
                                     <li>内部節が抽象型</li>
@@ -1105,6 +1107,7 @@ p = PolarCoords(1//2, 2//3)
                                 </ul>
                             </li>
                         </ul>
+                        <img src="fig/types.svg"/>
                     </div>
                     <pre style="flex: auto;"><code class="language-julia">
 Integer  # 抽象型
@@ -1112,6 +1115,7 @@ Int64    # 具象型
 UInt8    # 具象型
 Float64  # 具象型
 
+# 階層関係
 Int64   <: Integer  #> true
 UInt8   <: Integer  #> true
 Float64 <: Integer  #> false
@@ -1121,7 +1125,6 @@ Float64 <: Integer  #> false
 0.5 isa Float64  #> false
 0.5 isa Integer  #> false
                     </code></pre>
-                    <img src="fig/types.svg"/>
                 </div>
             </section>
         </div>
@@ -1130,10 +1133,7 @@ Float64 <: Integer  #> false
             <section class="slide">
                 <h3>例：<code>Number</code>抽象型以下の階層</h3>
                 <div class="slide-body">
-                    <ul>
-                        <li>角丸の節が抽象型</li>
-                        <li>パラメトリック型（<code>Complex</code>など）は抽象型とも具象型とも言いにくい</li>
-                    </ul>
+                    角丸の節が抽象型
                     <img style="max-width: 100%;" src="fig/numerictypes.svg">
                 </div>
             </section>
@@ -1167,6 +1167,7 @@ f(x::Integer) = "Integer"
 f(42)    #> "Int64"
 f(0.5)   #> "Float64"
 f(true)  #> "Integer"
+f('a')   #! MethodError
 
 # Int * Intメソッドが呼び出される
 2 * 3  #> 6
