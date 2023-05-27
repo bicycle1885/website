@@ -1,0 +1,324 @@
+[
+  {
+    "objectID": "corrections.html",
+    "href": "corrections.html",
+    "title": "訂正",
+    "section": "",
+    "text": "このページにない疑問点や誤りを発見した場合は bicycle1885@gmail.com までご連絡ください。"
+  },
+  {
+    "objectID": "corrections.html#章",
+    "href": "corrections.html#章",
+    "title": "訂正",
+    "section": "1章",
+    "text": "1章"
+  },
+  {
+    "objectID": "corrections.html#章-1",
+    "href": "corrections.html#章-1",
+    "title": "訂正",
+    "section": "2章",
+    "text": "2章"
+  },
+  {
+    "objectID": "corrections.html#章-2",
+    "href": "corrections.html#章-2",
+    "title": "訂正",
+    "section": "3章",
+    "text": "3章"
+  },
+  {
+    "objectID": "corrections.html#章-3",
+    "href": "corrections.html#章-3",
+    "title": "訂正",
+    "section": "4章",
+    "text": "4章"
+  },
+  {
+    "objectID": "corrections.html#章-4",
+    "href": "corrections.html#章-4",
+    "title": "訂正",
+    "section": "5章",
+    "text": "5章"
+  },
+  {
+    "objectID": "corrections.html#章-5",
+    "href": "corrections.html#章-5",
+    "title": "訂正",
+    "section": "6章",
+    "text": "6章"
+  },
+  {
+    "objectID": "corrections.html#章-6",
+    "href": "corrections.html#章-6",
+    "title": "訂正",
+    "section": "7章",
+    "text": "7章"
+  },
+  {
+    "objectID": "corrections.html#章-7",
+    "href": "corrections.html#章-7",
+    "title": "訂正",
+    "section": "8章",
+    "text": "8章"
+  },
+  {
+    "objectID": "corrections.html#章-8",
+    "href": "corrections.html#章-8",
+    "title": "訂正",
+    "section": "9章",
+    "text": "9章"
+  },
+  {
+    "objectID": "corrections.html#章-9",
+    "href": "corrections.html#章-9",
+    "title": "訂正",
+    "section": "10章",
+    "text": "10章"
+  },
+  {
+    "objectID": "corrections.html#章-10",
+    "href": "corrections.html#章-10",
+    "title": "訂正",
+    "section": "11章",
+    "text": "11章"
+  },
+  {
+    "objectID": "corrections.html#章-11",
+    "href": "corrections.html#章-11",
+    "title": "訂正",
+    "section": "12章",
+    "text": "12章"
+  },
+  {
+    "objectID": "corrections.html#章-12",
+    "href": "corrections.html#章-12",
+    "title": "訂正",
+    "section": "13章",
+    "text": "13章"
+  },
+  {
+    "objectID": "corrections.html#章-13",
+    "href": "corrections.html#章-13",
+    "title": "訂正",
+    "section": "14章",
+    "text": "14章"
+  },
+  {
+    "objectID": "corrections.html#章-14",
+    "href": "corrections.html#章-14",
+    "title": "訂正",
+    "section": "15章",
+    "text": "15章"
+  },
+  {
+    "objectID": "corrections.html#章-15",
+    "href": "corrections.html#章-15",
+    "title": "訂正",
+    "section": "16章",
+    "text": "16章"
+  },
+  {
+    "objectID": "corrections.html#章-16",
+    "href": "corrections.html#章-16",
+    "title": "訂正",
+    "section": "17章",
+    "text": "17章"
+  },
+  {
+    "objectID": "corrections.html#章-17",
+    "href": "corrections.html#章-17",
+    "title": "訂正",
+    "section": "18章",
+    "text": "18章"
+  },
+  {
+    "objectID": "corrections.html#付録a",
+    "href": "corrections.html#付録a",
+    "title": "訂正",
+    "section": "付録A",
+    "text": "付録A"
+  },
+  {
+    "objectID": "corrections.html#付録b",
+    "href": "corrections.html#付録b",
+    "title": "訂正",
+    "section": "付録B",
+    "text": "付録B"
+  },
+  {
+    "objectID": "corrections.html#付録c",
+    "href": "corrections.html#付録c",
+    "title": "訂正",
+    "section": "付録C",
+    "text": "付録C"
+  },
+  {
+    "objectID": "code.html",
+    "href": "code.html",
+    "title": "サンプルコード",
+    "section": "",
+    "text": "このページでは「Juliaプログラミング大全」中のサンプルコードを掲載しています。\nファイルに特別の記載がない限りはパブリック・ドメインです。\nサンプルコードのファイルは次のリンクで一括ダウンロードできます。"
+  },
+  {
+    "objectID": "code.html#章",
+    "href": "code.html#章",
+    "title": "サンプルコード",
+    "section": "1章",
+    "text": "1章\n\ninsertionsort.jl\n# 挿入ソート\nfunction insertionsort(xs)\n    xs = copy(xs)\n    for i in 2:lastindex(xs)\n        x = xs[i]\n        while i &gt; 1 && xs[i-1] &gt; x\n            xs[i] = xs[i-1]\n            i -= 1\n        end\n        xs[i] = x\n    end\n    return xs\nend\n\n\nnq/nqueens.jl\n#!/usr/bin/env julia\n\n# 列fileにクイーンを置き、再帰的に解を数え上げる\nfunction solve(ranks, file)\n    n = length(ranks)\n    nsols = 0  # 解の数\n    for rank in 1:n\n        for i in 1:file-1\n            @inbounds r = rank - ranks[i]\n            if r == 0 || file - i == abs(r)\n                # 横か斜めにクイーンがあるので次の行に移る\n                @goto next\n            end\n        end\n        # (file, rank)にクイーンを置く\n        ranks[file] = rank\n        # 次の列に移る（既に最後の列なら解を1つ発見）\n        nsols += file &lt; n ? solve(ranks, file + 1) : 1\n        @label next\n    end\n    return nsols\nend\n\n# nクイーン問題の解を数え上げる\nnqueens(n) = n ≤ 0 ? 0 : solve(zeros(Int, n), 1)\n\n# コマンドラインから呼び出されたときのエントリーポイント\nif abspath(PROGRAM_FILE) == @__FILE__\n    let\n        n = parse(Int, ARGS[1])\n        println(n, \": \", nqueens(n))\n    end\nend\n\n\npca.jl\n# 標準ライブラリの読込み\nusing LinearAlgebra\nusing Statistics\n\n# 主成分分析（データXは各列が観測値の行列）\nfunction pca(X)\n    # 中心化（各行の平均値を差し引く）\n    X = X .- mean(X, dims = 2)\n    # 特異値分解\n    U, = svd(X)\n    # 射影（i行目が第i主成分に対応）\n    return U'X\nend"
+  },
+  {
+    "objectID": "code.html#章-1",
+    "href": "code.html#章-1",
+    "title": "サンプルコード",
+    "section": "2章",
+    "text": "2章\n\nhello.jl\n#!/usr/bin/env julia\nprintln(\"hello, world\")\nprintln(\"こんにちは、世界\")\n\n\nhelloargs.jl\n#!/usr/bin/env julia\nname1 = ARGS[1]\nname2 = ARGS[2]\nprintln(\"こんにちは、$(name1)さんと$(name2)さん\")"
+  },
+  {
+    "objectID": "code.html#章-2",
+    "href": "code.html#章-2",
+    "title": "サンプルコード",
+    "section": "3章",
+    "text": "3章\n\nisprime.jl\n# nが素数かを判定\nfunction isprime(n)\n    for i in 2:isqrt(n)\n        if n % i == 0\n            # 約数が見つかったので素数ではない\n            return false\n        end\n    end\n    # 約数がなかったので素数である\n    return true\nend\n\n\nprimes.jl\n# n以下の素数を返す\nfunction primes(n)\n    # 素数の候補を配列で保持\n    list = trues(n)\n    # 1は素数ではないので削除\n    list[1] = false\n    # 最初の素数\n    p = 2\n    while p ≤ isqrt(n)\n        # 2p, 3p, … は素数ではないので削除\n        for i in 2p:p:n\n            list[i] = false\n        end\n        #@show p bitstring(list)  # 変数の内容を表示する\n        # 候補から最小の自然数（素数）を選ぶ\n        p = findnext(list, p + 1)\n    end\n    # 残った素数の候補を返す\n    return findall(list)\nend"
+  },
+  {
+    "objectID": "code.html#章-3",
+    "href": "code.html#章-3",
+    "title": "サンプルコード",
+    "section": "6章",
+    "text": "6章\n\nprintchars.jl\nfunction printchars(s)\n    fi, li = firstindex(s), lastindex(s)\n    i = fi\n    while i ≤ li\n        i &gt; fi && print('/')\n        print(s[i])\n        i = nextind(s, i)\n    end\nend"
+  },
+  {
+    "objectID": "code.html#章-4",
+    "href": "code.html#章-4",
+    "title": "サンプルコード",
+    "section": "7章",
+    "text": "7章\n\nlastitem.jl\nfunction lastitem(xs)\n    local last\n    for x in xs\n        last = x\n    end\n    return @isdefined(last) ? last : nothing\nend\n\n\nfib.jl\n# 通常の関数定義\nfunction fib(n)\n    if n ≤ 2\n        return 1\n    else\n        return fib(n - 1) + fib(n - 2)\n    end\nend\n\n# 1行関数定義\nfib(n) = n ≤ 2 ? 1 : fib(n - 1) + fib(n - 2)\n\n\nmin.jl\n# 引数の最小値を返す関数\nfunction min(x1, xs...)\n    ret = x1\n    for x in xs\n        if isless(x, ret)\n            ret = x\n        end\n    end\n    return ret\nend"
+  },
+  {
+    "objectID": "code.html#章-5",
+    "href": "code.html#章-5",
+    "title": "サンプルコード",
+    "section": "8章",
+    "text": "8章\n\nperiodictable.jl\n# 元素（chemical element）\nstruct ChemElem\n    number::Int\n    symbol::String\nend\n\n# 周期表（periodic table）\nstruct PeriodicTable\n    elements::Vector{ChemElem}  # 元素\n    groups::Vector{Int}         # 族\n    periods::Vector{Int}        # 周期\nend\n\n# 簡単のため原子番号1−6のみ\ntable = PeriodicTable(\n    # elements\n    [ChemElem(1, \"H\"), ChemElem(2, \"He\"), ChemElem(3, \"Li\"),\n     ChemElem(4, \"Be\"), ChemElem(5, \"B\"), ChemElem(6, \"C\")],\n    # groups\n    [1, 18, 3, 4, 13, 14],\n    # periods\n    [1, 1, 2, 2, 2, 2]\n)\n\n\nreportfields.jl\n# 構造体型の構造を出力\nfunction reportfields(T)\n    println(T)\n    for i in 1:fieldcount(T)\n        name = fieldname(T, i)\n        type = fieldtype(T, i)\n        println(\"  [$(i)] $(name) :: $(type)\")\n    end\nend"
+  },
+  {
+    "objectID": "code.html#章-6",
+    "href": "code.html#章-6",
+    "title": "サンプルコード",
+    "section": "9章",
+    "text": "9章\n\ncircle.jl\nstruct Circle\n    r::Float64   # 半径\n    cx::Float64  # 中心のx座標\n    cy::Float64  # 中心のy座標\n\n    # 内部コンストラクタ\n    function Circle(r::Real, cx::Real, cy::Real)\n        r ≥ 0 || throw(ArgumentError(\"r must be non-negative\"))\n        return new(r, cx, cy)\n    end\nend\n\n\nrgb.jl\n# RGB色モデル（true color）\nstruct RGB\n    r::UInt8  # 赤（red）\n    g::UInt8  # 緑（green）\n    b::UInt8  # 青（blue）\n\n    # 内部コンストラクタ\n    function RGB(r::Integer, g::Integer, b::Integer)\n        0 ≤ r ≤ 255 && 0 ≤ g ≤ 255 && 0 ≤ b ≤ 255 ||\n        throw(ArgumentError(\"value must be between 0 and 255\"))\n        return new(r, g, b)\n    end\nend\n\n# 無彩色を作る外部コンストラクタ\nRGB(x::Integer) = RGB(x, x, x)\n\n\nnormal.jl\n# 正規分布（normal distribution）\nstruct Normal{T &lt;: Real}\n    μ::T  # 平均\n    σ::T  # 標準偏差\n\n    # 内部コンストラクタ\n    function Normal{T}(μ::Real = 0, σ::Real = 1) where T &lt;: Real\n        σ &gt; 0 || throw(ArgumentError(\"σ must be positive\"))\n        return new{T}(μ, σ)\n    end\nend\n\n# 外部コンストラクタ\nfunction Normal(μ::Real = 0, σ::Real = 1)\n    μ, σ = promote(float(μ), float(σ))\n    return Normal{typeof(μ)}(μ, σ)\nend\n\n# 確率密度関数\nfunction pdf(dist::Normal, x::Real)\n    # Julia 1.7以降では (; μ, σ) = dist も可\n    μ, σ = dist.μ, dist.σ\n    return (σ * oftype(σ, √(2π))) \\ exp(-2 \\ ((x - μ) / σ)^2)\nend\n\n\nnode.jl\n# 木構造のノード\nmutable struct Node\n    index::Int\n    parent::Node\n\n    # 内部コンストラクタの定義\n    Node(index::Integer) = new(index)\n    Node(index::Integer, parent::Node) = new(index, parent)\nend\n\n\nstack.jl\nmutable struct Stack{T}\n    data::Vector{T}  # 要素\n    size::Int        # 要素数\n\n    function Stack{T}(; capacity::Integer = 4) where T\n        data = Vector{T}(undef, capacity)\n        return new{T}(data, 0)\n    end\nend\n\nStack(; capacity::Integer = 4) = Stack{Any}(; capacity)\n\nBase.eltype(::Type{Stack{T}}) where T = T\nBase.length(stack::Stack) = stack.size\nBase.isempty(stack::Stack) = stack.size == 0\n\nfunction Base.push!(stack::Stack, item)\n    item = convert(eltype(stack), item)\n    if stack.size == length(stack.data)\n        # stack.dataがいっぱいなら、サイズを2倍に拡大\n        resize!(stack.data, max(2 * stack.size, 4))\n    end\n    newsize = stack.size + 1\n    stack.data[newsize] = item\n    stack.size = newsize\n    return stack\nend\n\nfunction Base.pop!(stack::Stack)\n    isempty(stack) && throw(ArgumentError(\"cannot pop! an empty stack\"))\n    item = stack.data[stack.size]\n    stack.size -= 1\n    return item\nend\n\n\nshortstring.jl\n# 短い（7バイト以下）ASCII文字列のデータ型\nstruct ShortString # &lt;: AbstractString\n    data::UInt64\nend\n\n# コンストラクタ\nShortString(s::String) = convert(ShortString, s)\n\n# String → ShortStringの変換\nfunction Base.convert(::Type{ShortString}, s::String)\n    n = ncodeunits(s)\n    if n &gt; 7 || !isascii(s) || '\\0' in s\n        throw(InexactError(:ShortString, ShortString, s))\n    end\n    data = zero(UInt64)\n    for i in n:-1:1\n        data = (data &lt;&lt; 8) | codeunit(s, i)\n    end\n    return ShortString(data)\nend\n\n# ShortString → Stringの変換\nBase.convert(::Type{String}, s::ShortString) = sprint(print, s)\n\n# show関数の拡張\nBase.show(out::IO, s::ShortString) = show(out, convert(String, s))\n\n# print関数の拡張\nfunction Base.print(out::IO, s::ShortString)\n    data = s.data\n    while data & 0xff != 0\n        write(out, data % UInt8)\n        data &gt;&gt;= 8\n    end\nend\n\n\nbitrotator.jl\n# ビットを左回転するイテレータ\nstruct BitRotator{T &lt;: Base.BitInteger}\n    bits::T\nend\n\n# 初期状態を返す\nBase.iterate(rot::BitRotator) = (rot.bits, 1)\n\n# 次の反復を準備する（状態を表すk引数は初期位置からの距離）\nfunction Base.iterate(rot::BitRotator, k::Int)\n    x = rot.bits\n    nbits = sizeof(x) * 8\n    if k ≥ nbits\n        return nothing\n    end\n    return bitrotate(x, k), k + 1\nend\n\n# イテレータの長さ（要素数）\nBase.length(rot::BitRotator) = sizeof(rot.bits) * 8\n\n\ncomposition.jl\n# コンポジション型\nstruct Composition{T &lt;: Real} &lt;: AbstractVector{T}\n    data::Vector{T}\n\n    function Composition(x)\n        c = x ./ sum(x)\n        return new{eltype(c)}(c)\n    end\nend\n\n# スカラー倍\nBase.:*(α::Real, x::Composition) = Composition(x .^ α)\nBase.:*(x::Composition, α::Real) = Composition(x .^ α)\n\n# ベクトル和\nBase.:+(x::Composition, y::Composition) = Composition(x .* y)\n\n# ベクトル和の逆元とベクトル差\nBase.:-(x::Composition) = Composition(inv.(x))\nBase.:-(x::Composition, y::Composition) = x + (-y)\n\nBase.size(x::Composition) = size(x.data)\nBase.getindex(x::Composition, i::Integer) = x.data[i]\n\n\ntrait.jl\n# トレイトの定義\nabstract type Trait end\nstruct TraitA &lt;: Trait end\nstruct TraitB &lt;: Trait end\n\n# トレイトを利用する関数\nf(x) = _f(Trait(typeof(x)), x)\n_f(::TraitA, x) = \"Trait A\"\n_f(::TraitB, x) = \"Trait B\"\n\n# トレイトを実装する型\nstruct Foo end\nTrait(::Type{Foo}) = TraitA()\nstruct Bar end\nTrait(::Type{Bar}) = TraitB()\nstruct Baz end\nTrait(::Type{Baz}) = TraitB()"
+  },
+  {
+    "objectID": "code.html#章-7",
+    "href": "code.html#章-7",
+    "title": "サンプルコード",
+    "section": "10章",
+    "text": "10章\n\nmsb.jl\n# 最上位ビット（most significant bit）を取得する関数\nfor T in [UInt8, UInt16, UInt32, UInt64, UInt128]\n    @eval msb(x::$T) = x &gt;&gt; (sizeof($T) * 8 - 1)\nend\n\n\ncheck.jl\n# 注：この定義は問題あり\nmacro check(ex)\n    code = string(ex)  # 式を文字列化\n    quote\n        print($code, \" → \")\n        if $ex\n            println(\"GOOD\")\n        else\n            println(\"BAD\")\n        end\n    end\nend\n\n\nrepeat.jl\nmacro repeat(n, ex)\n    quote\n        for _ in 1:$(esc(n))\n            $(esc(ex))\n        end\n    end\nend\n\n\nelapsed.jl\n# base/timing.jl (MIT license: https://julialang.org/license)\nmacro elapsed(ex)\n    quote\n        local t0 = time_ns()\n        $(esc(ex))\n        (time_ns() - t0) / 1e9\n    end\nend\n\n\nfstring.jl\n# f文字列の解析処理\nfunction parse_fstring(str)\n    parts = Union{String, Symbol}[]\n    pos = firstindex(str)\n    # '{'を探す\n    while (open = findnext('{', str, pos)) !== nothing\n        # '}'を探す\n        close = findnext('}', str, open)\n        isnothing(close) && break  # ペアになる'}'がない\n        # '{'より前までを詰める\n        push!(parts, str[pos:prevind(str, open)])\n        # '{'と'}'の間の名前を詰める（空文字列ならそのまま）\n        name = str[nextind(str, open):prevind(str, close)]\n        push!(parts, isempty(name) ? \"{}\" : Symbol(name))\n        # '}'の直後の位置を取得する\n        pos = nextind(str, close)\n    end\n    # 残りの文字列を詰める\n    push!(parts, str[pos:end])\n    return parts\nend\n\n# マクロの定義\nmacro f_str(str)\n    parts = parse_fstring(str)\n    # 変数（シンボル）はエスケープする\n    parts = map(x -&gt; x isa Symbol ? esc(x) : x, parts)\n    return :(string($(parts...)))\nend\n\n\ngenfun.jl\n@generated function genfun(x)\n    if x &lt;: Real\n        return :(println(\"$(repr(x)) is Real\"))\n    else\n        return :(println(\"$(repr(x)) is not Real\"))\n    end\nend\n\n\npolynomial.jl\nfunction genpoly(n)\n    @assert n ≥ 1\n    ex = :(a[1])\n    for k in 2:n\n        ex = :(fma($(ex), x, a[$(k)]))\n    end\n    return ex\nend\n\n@generated polynomial(\n    x::Number,\n    a::NTuple{n, Number},\n) where n = genpoly(n)"
+  },
+  {
+    "objectID": "code.html#章-8",
+    "href": "code.html#章-8",
+    "title": "サンプルコード",
+    "section": "11章",
+    "text": "11章\n\nmysparse.jl\n# sparse関数のように振る舞う関数\nfunction mysparse(I, J, V, m = maximum(I), n = maximum(J))\n    M = spzeros(m, n)\n    for (i, j, v) in zip(I, J, V)\n        M[i,j] = v\n    end\n    return M\nend"
+  },
+  {
+    "objectID": "code.html#章-9",
+    "href": "code.html#章-9",
+    "title": "サンプルコード",
+    "section": "12章",
+    "text": "12章\n\ntarai.jl\n# CPUを使い切る処理\nfunction tarai(x, y, z)\n    if x &gt; y\n        return tarai(\n            tarai(x - 1, y, z),\n            tarai(y - 1, z, x),\n            tarai(z - 1, x, y))\n    else\n        return y\n    end\nend\n\n\nproducer-consumer.jl\n# チャネルに値を詰める生産者\nchan = Channel{Int}() do chan\n    for i in 1:10\n        put!(chan, i)\n    end\nend\n\n# チャネルから値を取り出す消費者\n@sync for label in 'A':'E'\n    @async for data in chan\n        println(label, \": \", data)\n    end\nend\n\n\ncounter-bad.jl\n# 誤った実装！\ncounter = 0\nThreads.@threads for i in 1:1_000_000\n    global counter\n    counter += 1\nend\n@show counter\n\n\nmb/mandelbrot.jl\nconst N = 1000\n\n# マンデルブロ集合に含まれるか計算\nfunction mandelbrot(c::Complex; maxiters = N)\n    k = 0\n    z = zero(c)\n    while k &lt; maxiters && abs2(z) ≤ 4\n        z = z*z + c\n        k += 1\n    end\n    return maxiters - k  # 0なら収束と判定\nend\n\n\nmb/plot-seq.jl\n# 逐次実行版\nfunction plot_seq(x, y; maxiters = 1000)\n    m, n = length.((y, x))\n    img = zeros(Int16, m, n)\n    for j in 1:n, i in 1:m\n        c = complex(x[j], y[i])\n        img[i,j] = mandelbrot(c; maxiters)\n    end\n    return img\nend\n\n\nmb/plot-par1.jl\n# 並列実行版1\nfunction plot_par1(x, y; maxiters = N)\n    m, n = length.((y, x))\n    img = zeros(Int16, m, n)\n    Threads.@threads :static for j in 1:n\n        for i in 1:m\n            c = complex(x[j], y[i])\n            img[i,j] = mandelbrot(c; maxiters)\n        end\n    end\n    return img\nend\n\n\ncounter-lock.jl\n# ロックを使った排他制御\ncounter = 0\nmutex = ReentrantLock()\nThreads.@threads for i in 1:1_000_000\n    global counter\n    lock(mutex)\n    # ←ここからクリティカルセクション\n    counter += 1\n    # ←ここまでクリティカルセクション\n    unlock(mutex)\nend\n@show counter\n\n\nnotification.jl\nusing .Threads: Condition, @spawn\n\n@sync begin\n    cond = Condition()\n    ready = false\n\n    # イベント通知をするタスク\n    @spawn begin\n        sleep(1)\n        @lock cond begin\n            ready = true\n            println(\"Ready!\")\n            # イベント通知\n            notify(cond)\n        end\n    end\n\n    # イベント通知を受けるタスク\n    for i in 1:8\n        @spawn begin\n            @lock cond while !ready\n                wait(cond)\n            end\n            # イベント通知後の処理\n            print(\"Go!\")\n        end\n    end\nend\nprintln()\n\n\ncounter-atomicadd.jl\n# アトミック操作によるカウンター\nmutable struct Counter\n    @atomic count::Int\nend\n\ncounter = Counter(0)\nThreads.@threads for i in 1:1_000_000\n    @atomic counter.count += 1\nend\n@show counter.count\n\n\natomic.jl\n# アトミック型\nmutable struct Atomic{T}\n    @atomic data::T\nend\n\n\ndist/addworkers.jl\nusing Distributed\n\nlet\n    workers = [\n        split(line, '\\t')[1]\n        for line in eachline(\"workers.txt\")]\n    exename = \"/usr/local/julia/bin/julia\"\n    sshflags = `\n        -q\n        -i workerkey\n        -o StrictHostKeyChecking=no\n        -o UserKnownHostsFile=/dev/null`\n    addprocs(workers; dir = \"/\", exename, sshflags)\n    @info \"Connected to $(length(workers)) workers\"\nend"
+  },
+  {
+    "objectID": "code.html#章-10",
+    "href": "code.html#章-10",
+    "title": "サンプルコード",
+    "section": "13章",
+    "text": "13章\n\nwalkpwd.jl\n# pwd()以下のすべてのディレクトリとファイルを再帰的に探索\nfor (root, dirs, files) in walkdir(pwd())\n    # root直下のディレクトリを列挙\n    for dir in dirs\n        println(\"d:\", joinpath(root, dir))\n    end\n    # root直下のファイルを列挙\n    for file in files\n        println(\"f:\", joinpath(root, file))\n    end\nend\n\n\ntitlecase.jl\n#!/usr/bin/env julia\nline = readline(stdin)\nprintln(stdout, titlecase(line))\n\n\njson.jl\nusing JSON\n\n# JSON形式の文字列のパース\nlangs = JSON.parse(\"\"\"\n{\n    \"julia\": {\n        \"first-release\": 2012,\n        \"creators\": [\n            \"Jeff Bezanson\",\n            \"Stefen Karpinski\",\n            \"Viral Shah\"\n        ]\n    },\n    \"python\": {\n        \"first-release\": 1991,\n        \"creators\": [\"Guido van Rossum\"]\n    }\n}\n\"\"\")\n\n# JuliaのオブジェクトからJSON形式の文字列への変換\nJSON.json(langs)\n\n\nlogging.jl\nusing Logging\n\n# ファイルに出力するロガー\nfile = open(\"messages.log\", \"w\")\nlogger = ConsoleLogger(file, Logging.Debug)\nwith_logger(logger) do\n    @info \"Info message\"\n    @debug \"Debug message\"\nend\nclose(file)"
+  },
+  {
+    "objectID": "code.html#章-11",
+    "href": "code.html#章-11",
+    "title": "サンプルコード",
+    "section": "14章",
+    "text": "14章\n\ntoplogger.jl\n# topコマンドの1行目をlog.txtファイルに追記\ntoplogger = pipeline(\n    pipeline(`top -b`, stdout = `head -1`),\n    stdout = \"log.txt\",\n    append = true,\n)\n\n# 1秒間隔で10回実行\nfor _ in 1:10\n    run(toplogger)\n    sleep(1)\nend"
+  },
+  {
+    "objectID": "code.html#章-12",
+    "href": "code.html#章-12",
+    "title": "サンプルコード",
+    "section": "15章",
+    "text": "15章\n\nvoyager.c\n#include &lt;stdio.h&gt;\n\nconst char* message =\n    \"Hello from the children of planet Earth.\";\n\nvoid say_hello(void)\n{\n    printf(\"%s\\n\", message);\n}\n\n\nmemcmp.jl\n# s1とs2のメモリ比較（o1とo2はオフセット）\nfunction memcmp(x1, o1, x2, o2)\n    n = min(sizeof(x1) - o1, sizeof(x2) - o2)\n    GC.@preserve x1 x2 begin\n        s1 = pointer(x1) + o1\n        s2 = pointer(x2) + o2\n        # int memcmp(void *s1, void *s2, size_t n);\n        return ccall(\n            :memcmp,\n            Cint,\n            (Ptr{Cvoid}, Ptr{Cvoid}, Csize_t),\n            s1, s2, n)\n    end\nend\n\n\nsort.c\n#include &lt;stddef.h&gt;\n\nvoid sort(double *xs, size_t n)\n{\n    for (size_t i = 0; i &lt; n; i++)\n        for (size_t j = 0; j &lt; n; j++)\n            if (xs[i] &lt; xs[j]) {\n                // swap x[i] and x[j]\n                double tmp = xs[i];\n                xs[i] = xs[j];\n                xs[j] = tmp;\n            }\n}\n\n\ntextwrap.jl\nusing PyCall\n\n# モジュールの読込みと関数定義\npy\"\"\"\nimport textwrap\n\n# wraptextはテキストを適当なところで折り返す\ndef wraptext(text, width=50):\n    return \"\\n\".join(textwrap.wrap(text, width=width))\n\"\"\"\n\n# 関数の取得\nwraptest = py\"wraptext\"\n\n# 実行例\nlongtext = \"Julia was designed from the beginning for high performance. Julia programs compile to efficient native code for multiple platforms via LLVM.\"\nprintln(wraptest(longtext))\n## Julia was designed from the beginning for high\n## performance. Julia programs compile to efficient\n## native code for multiple platforms via LLVM."
+  },
+  {
+    "objectID": "code.html#章-13",
+    "href": "code.html#章-13",
+    "title": "サンプルコード",
+    "section": "16章",
+    "text": "16章\n\nmyproject/hello.jl\nusing Example: hello\n\nprintln(hello(ARGS[1]))\n\n\npkgtemplate.jl\nusing PkgTemplates\n\ntemplate = Template(\n    # ~/workspace以下にパッケージを生成\n    dir = \"~/workspace\",\n    # Julia 1.6以降をサポート\n    julia = v\"1.6\",\n    # プラグインの設定\n    plugins = [\n        # テスト固有の環境を有効化\n        Tests(project = true),\n        # 自動化にGitHub Actionsを使用\n        GitHubActions(),\n        # カバレッジ報告にCodecovを使用\n        Codecov(),\n        # ドキュメント生成にDocumenter.jlを使用\n        Documenter{GitHubActions}(),\n    ]\n)\n\n\nOthello/src/Othello.jl\n# Othelloモジュールの定義開始\nmodule Othello\n\n# インターフェース（モジュール外から使う型や関数）\nexport User, RandomAI, play\n\ninclude(\"disk.jl\")\ninclude(\"position.jl\")\ninclude(\"board.jl\")\ninclude(\"player.jl\")\ninclude(\"game.jl\")\n\nend  # Othelloモジュールの定義終了\n\n\nOthello/test/runtests.jl\nusing Othello\nusing Test\n\n# 何度も使う変数は取り込んでおく\nusing Othello: DISK_EMPTY, DISK_WHITE, DISK_BLACK\n\n# テストケースのグループ化\n@testset \"Othello.jl\" begin\n    # flip関数のテスト\n    @test Othello.flip(DISK_WHITE) == DISK_BLACK\n    @test Othello.flip(DISK_BLACK) == DISK_WHITE\n    # ArgumentErrorが発生することをテスト\n    @test_throws ArgumentError Othello.flip(DISK_EMPTY)\nend\n\n\nmessage.jl\n\"\"\"\nA data type to represent a message.\n\"\"\"\nstruct Message\n    from::String\n    content::String\nend\n\n\"\"\"\n    send(msg, to[; anonymous = false])\n\nSend a message `msg` to a person `to`.\n\nIt sends the message and returns the number of written bytes.\n\n# Examples\n```jldoctest\njulia&gt; msg = Message(\"Alice\", \"Hi, how have you been?\");\n\njulia&gt; send(msg, \"Bob\")\n30\n```\n\"\"\"\nfunction send(\n    msg::Message,\n    to::AbstractString;\n    anonymous::Bool = false,\n)\n    from = anonymous ? \"?\" : msg.from\n    data = \"[$from] $(msg.content)\"\n    return write(devnull, data)\nend"
+  },
+  {
+    "objectID": "code.html#章-14",
+    "href": "code.html#章-14",
+    "title": "サンプルコード",
+    "section": "17章",
+    "text": "17章\n\nPrimeTools.jl\nmodule PrimeTools\n\nfunction isprime(n::Integer)\n    if n ≤ 1\n        return false\n    end\n    i = 2\n    while i ≤ isqrt(n)\n        if n % i == 0\n            return false\n        end\n        i += 1\n    end\n    return true\nend\n\nend  # module\n\n\nisin.jl\n# xがcolに含まれるか判定\nfunction isin(x::T, col::Vector{T}) where T\n    for y in col\n        y == x && return true\n    end\n    return false\nend\n\n\nsum-unstable.jl\n# 型が安定していないsum関数の実装\nfunction sum_unstable(xs)\n    s = 0\n    for x in xs\n        s += x\n    end\n    return s\nend\n\n\nloop.jl\nfunction loop(n)\n    s = 0.0\n    for i in 1:n\n        s += sin(i) / i\n    end\n    return 2s + 1\nend\n\n\nsum-stable.jl\n# 型が安定しているsum関数の実装\nfunction sum_stable(xs)\n    s = zero(eltype(xs))\n    for x in xs\n        s += x\n    end\n    return s\nend"
+  },
+  {
+    "objectID": "code.html#章-15",
+    "href": "code.html#章-15",
+    "title": "サンプルコード",
+    "section": "18章",
+    "text": "18章\n\ncalccircle.jl\n# 円の直径・円周・面積の計算関数\ndiameter(r) = 2r\ncircumference(r) = diameter(r) * π\narea(r) = π * r^2\n\n# メイン関数\nfunction main(args)\n    r = parse(Float64, args[1])\n    println(\"       radius = $(r)\")\n    println(\"     diameter = $(diameter(r))\")\n    println(\"circumference = $(circumference(r))\")\n    println(\"         area = $(area(r))\")\nend\n\n# プログラムのエントリーポイント\n(abspath(PROGRAM_FILE) == @__FILE__) && main(ARGS)\n\n\ncalccircle-test.jl\nusing Test\n\ninclude(\"circle.jl\")\n\n@testset \"circle\" begin\n    r = 2.1\n    @test diameter(r) ≈ 4.2\n    @test circumference(r) ≈ 13.194689145077131\n    @test area(r) ≈ 13.854423602330987\nend\n\n\nsleeper.jl\n# sleep関数を呼び出す関数\nfunction sleeper()\n    sleep(1)\n    for i in 1:15\n        sleep(0.1)\n    end\n    deepsleeper(3)\nend\n\n# 再帰関数\nfunction deepsleeper(n)\n    if n ≤ 1\n        sleep(1)\n    else\n        deepsleeper(n - 1)\n    end\nend\n\nusing Profile\nsleeper()           # コンパイル\n@profile sleeper()  # プロファイル\nProfile.print()     # プロファイル結果の出力\n\n\nallocator.jl\n# メモリを割り当てる関数\nfunction allocator(n)\n    zeros(n)\n    zeros(n, n)\n    zeros(n, n, n)\nend\n\nusing Profile\nallocator(1)                 # コンパイル\nProfile.clear_malloc_data()  # リセット\nallocator(100)               # プロファイル\n\n\nvec4.jl\n# 長さ4のベクトル\nstruct Vec4{T}\n    x::T\n    y::T\n    z::T\n    w::T\nend\n\n# Vec4型のnorm\nnorm(v::Vec4) =\n    sqrt(abs2(v.x) + abs2(v.y) + abs2(v.z) + abs2(v.w))\n\n# Vector型のnorm\nfunction norm(v::AbstractVector)\n    s = zero(eltype(v))\n    for x in v\n        s += abs2(x)\n    end\n    return sqrt(s)\nend\n\n\nrank1matrix.jl\nusing LinearAlgebra: norm, normalize, normalize!\n\n# 階数が1以下の行列\nstruct Rank1Matrix{T} &lt;: AbstractMatrix{T}\n    # A = u * v'\n    u::Vector{T}\n    v::Vector{T}\nend\n\n# 基本操作\nBase.size(A::Rank1Matrix) = (length(A.u), length(A.v))\nBase.getindex(A::Rank1Matrix, i::Integer, j::Integer) =\n    A.u[i] * A.v[j]\n\n# Matrix型への変換\nMatrix(A::Rank1Matrix) = A.u * A.v'\n\n# 行列ベクトル積\nBase.:*(A::Rank1Matrix, x::AbstractVector) = A.u * A.v'x\n\n# 行列積\nBase.:*(A::Rank1Matrix, B::Rank1Matrix) =\n    Rank1Matrix(A.u * A.v'B.u, B.v)\nBase.:*(A::Rank1Matrix, B::AbstractMatrix) =\n    Rank1Matrix(A.u, B'A.v)\nBase.:*(A::AbstractMatrix, B::Rank1Matrix) =\n    Rank1Matrix(A * B.u, B.v)\n\n\ndatabase.jl\n# データベースのレコード\nstruct Record{T}\n    serial::Int\n    data::T\nend\n\n# データベース\nstruct Database{T}\n    records::Vector{Record{T}}\nend\n\n# 空のデータベースのコンストラクタ\nDatabase{T}() where T = Database{T}(Record{T}[])\n\n# データベースに新しいレコードを追加\nfunction Base.push!(db::Database{T}, item) where T\n    serial = length(db.records)\n    record = Record(serial, convert(T, item))\n    push!(db.records, record)\n    return db\nend\n\n\nsplit.jl\n# SubString版\nfunction split_sub(isprefix, s)\n    pos = findfirst(!isprefix, s)\n    pos === nothing && return SubString(s), SubString(\"\")\n    return @view(s[begin:prevind(s, pos)]), @view(s[pos:end])\nend\n\n# String版\nfunction split_str(isprefix, s)\n    pos = findfirst(!isprefix, s)\n    pos === nothing && return s, \"\"\n    return s[begin:prevind(s, pos)], s[pos:end]\nend\n\n\nrowmins.jl\n# 各行の最小値を計算する関数（行優先）\nfunction rowmins_row(A)\n    a = A[:,begin]\n    for i in axes(A, 1)\n        for j in firstindex(A, 2)+1:lastindex(A, 2)\n            @inbounds a[i] = min(A[i,j], a[i])\n        end\n    end\n    return a\nend\n\n# 各行の最小値を計算する関数（列優先）\nfunction rowmins_col(A)\n    a = A[:,begin]\n    for j in firstindex(A, 2)+1:lastindex(A, 2)\n        for i in axes(A, 1)\n            @inbounds a[i] = min(A[i,j], a[i])\n        end\n    end\n    return a\nend\n\n\nsortmerge.jl\n# ソート済の配列A,Bの要素を配列Cに昇順にコピー\nfunction sortmerge!(C, A, B)\n    @assert length(A) + length(B) == length(C)\n    i, j, k = firstindex.((A, B, C))\n    @inbounds while i ≤ lastindex(A) && j ≤ lastindex(B)\n        a = A[i]\n        b = B[j]\n        if isless(a, b)\n            C[k] = a\n            i += 1\n        else\n            C[k] = b\n            j += 1\n        end\n        k += 1\n    end\n    if i ≤ lastindex(A)\n        copyto!(C, k, A, i, lastindex(A) - i + 1)\n    else\n        copyto!(C, k, B, j, lastindex(B) - j + 1)\n    end\n    return C\nend\n\n\nb64/hex2char.jl\n# 6ビットから1文字への変換関数\nhex2char(h::UInt8) =\n    h &lt; 0x1a ? UInt8('A') + h        :\n    h &lt; 0x34 ? UInt8('a') + h - 0x1a :\n    h &lt; 0x3e ? UInt8('0') + h - 0x34 :\n    h ≡ 0x3e ? UInt8('+') : UInt8('/')\n\n\nb64/encode1.jl\n# Base64符号化関数（バージョン1）\nfunction encode1(data::AbstractVector{UInt8})\n    str = zeros(UInt8, cld(sizeof(data), 3) * 4)\n    i = firstindex(data)\n    j = firstindex(str)\n    k = 0     # 持ち越されたビットの長さ\n    h = 0x00  # 持ち越されたビット\n    @inbounds while i ≤ lastindex(data)\n        x = data[i]\n        str[j] = hex2char(h | x &gt;&gt; (k + 2))\n        j += 1\n        k += 2; k %= 8\n        h = 0x3f & x &lt;&lt; (6 - k)\n        k ≤ 4 && (i += 1)\n    end\n    # 余ったビットの処理\n    k == 0 || (str[j] = hex2char(h); j += 1)\n    # パディング処理\n    j ≤ lastindex(str) && (str[j] = UInt('='); j += 1)\n    j ≤ lastindex(str) && (str[j] = UInt('='); j += 1)\n    return str\nend\n\n\nb64/encode2.jl\n# Base64符号化関数（バージョン2）\nfunction encode2(data::AbstractVector{UInt8})\n    str = zeros(UInt8, cld(sizeof(data), 3) * 4)\n    i = firstindex(data)\n    j = firstindex(str)\n    @inbounds while i + 2 ≤ lastindex(data)\n        x1, x2, x3 = data[i], data[i+1], data[i+2]\n        i += 3\n        h1 =                  x1 &gt;&gt; 2\n        h2 = x1 &lt;&lt; 4 & 0x3f | x2 &gt;&gt; 4\n        h3 = x2 &lt;&lt; 2 & 0x3f | x3 &gt;&gt; 6\n        h4 = x3      & 0x3f\n        str[j  ] = hex2char(h1)\n        str[j+1] = hex2char(h2)\n        str[j+2] = hex2char(h3)\n        str[j+3] = hex2char(h4)\n        j += 4\n    end\n    finish!(str, data, lastindex(data) - i + 1)\n    return str\nend\n\n\nb64/encode3.jl\n# ルックアップテーブル\nconst ENCODE_TABLE = UInt8['A':'Z'; 'a':'z'; '0':'9'; '+'; '/']\n\n# Base64符号化関数（バージョン3）\nfunction encode3(data::AbstractVector{UInt8})\n    str = zeros(UInt8, cld(sizeof(data), 3) * 4)\n    i = firstindex(data)\n    j = firstindex(str)\n    @inbounds while i + 2 ≤ lastindex(data)\n        x1, x2, x3 = data[i], data[i+1], data[i+2]\n        i += 3\n        h1 =                  x1 &gt;&gt; 2\n        h2 = x1 &lt;&lt; 4 & 0x3f | x2 &gt;&gt; 4\n        h3 = x2 &lt;&lt; 2 & 0x3f | x3 &gt;&gt; 6\n        h4 = x3      & 0x3f\n        str[j  ] = ENCODE_TABLE[h1+1]\n        str[j+1] = ENCODE_TABLE[h2+1]\n        str[j+2] = ENCODE_TABLE[h3+1]\n        str[j+3] = ENCODE_TABLE[h4+1]\n        j += 4\n    end\n    finish!(str, data, lastindex(data) - i + 1)\n    return str\nend\n\n\nmb/plot-par2.jl\n# 並列実行版2\nfunction plot_par2(x, y; maxiters = N, blocksize = nothing)\n    m, n = length.((y, x))\n    if isnothing(blocksize)\n        # スレッド数x32個の区画に分割\n        p = Threads.nthreads()\n        blocksize = cld(n, 32p)\n    end\n    chan = Channel(spawn = true) do chan\n        # y軸と平行に分割\n        for J in Iterators.partition(1:n, blocksize)\n            put!(chan, J)\n        end\n    end\n    img = zeros(Int16, m, n)\n    Threads.foreach(chan) do J\n        for j in J, i in 1:m\n            c = complex(x[j], y[i])\n            img[i,j] = mandelbrot(c; maxiters)\n        end\n    end\n    return img\nend\n\n\nfs/parsum.jl\nusing .Threads: nthreads, @threads, threadid\n\nfunction parsum(A, k)\n    s = zeros(eltype(A), (nthreads() - 1) &lt;&lt; k + 1)\n    @threads :static for j in axes(A, 2)\n        offset = (threadid() - 1) &lt;&lt; k + 1\n        # 行列Aのj列目の総和を計算\n        @inbounds for i in axes(A, 1)\n            s[offset] += A[i,j]\n        end\n    end\n    return sum(s)\nend\n\n\nhist/histogram-serial.jl\nusing Images\n\nconst Img = Array{RGB{N0f8}}\n\n# 逐次実行\nfunction histogram_serial(img::Img)\n    hist_r = zeros(Int, 256)\n    hist_g = zeros(Int, 256)\n    hist_b = zeros(Int, 256)\n    @inbounds for i in eachindex(img)\n        x = img[i]  # 画素（pixel）\n        hist_r[reinterpret(UInt8, x.r)+1] += 1\n        hist_g[reinterpret(UInt8, x.g)+1] += 1\n        hist_b[reinterpret(UInt8, x.b)+1] += 1\n    end\n    return hist_r, hist_g, hist_b\nend\n\n\nhist/histogram-lock.jl\nusing .Threads: @threads, SpinLock\n\n# ロックを使った排他制御\nfunction histogram_lock(img::Img)\n    hist_r = zeros(Int, 256)\n    hist_g = zeros(Int, 256)\n    hist_b = zeros(Int, 256)\n    mutex = SpinLock()\n    @inbounds @threads for i in eachindex(img)\n        x = img[i]  # 画素（pixel）\n        lock(mutex)  # クリティカルセクション開始\n        hist_r[reinterpret(UInt8, x.r)+1] += 1\n        hist_g[reinterpret(UInt8, x.g)+1] += 1\n        hist_b[reinterpret(UInt8, x.b)+1] += 1\n        unlock(mutex)  # クリティカルセクション終了\n    end\n    return hist_r, hist_g, hist_b\nend\n\n\nhist/histogram-mapreduce.jl\nusing .Threads: @spawn, nthreads\n\n# MapReduceパターン\nfunction histogram_mapreduce(img::Img; p = nthreads())\n    # Map\n    n = cld(length(img), p)\n    parts = Iterators.partition(eachindex(img), n)\n    tasks = map(parts) do part\n        @spawn begin\n            hist_r = zeros(Int, 256)\n            hist_g = zeros(Int, 256)\n            hist_b = zeros(Int, 256)\n            @inbounds for i in part\n                x = img[i]  # 画素（pixel）\n                hist_r[reinterpret(UInt8, x.r)+1] += 1\n                hist_g[reinterpret(UInt8, x.g)+1] += 1\n                hist_b[reinterpret(UInt8, x.b)+1] += 1\n            end\n            hist_r, hist_g, hist_b\n        end\n    end\n\n    # Reduce\n    function add!((r1, g1, b1), (r2, g2, b2))\n        r1 .+= r2\n        g1 .+= g2\n        b1 .+= b2\n        return r1, g1, b1\n    end\n    return foldl(add!, fetch(task)::NTuple{3, Vector{Int}} for task in tasks)\nend\n\n\nnq/nqueens-flat.jl\n# フラット並列（MapReduce）\nfunction nqueens_flat(n)\n    n ≤ 1 && return Int(n == 1)\n    tasks = map(1:n) do rank\n        # (1, j)に最初のクイーンがあるタスクを作成\n        @spawn begin\n            ranks = zeros(Int, n)\n            ranks[1] = rank\n            return solve(ranks, 2)\n        end\n    end\n    return sum(fetch(task)::Int for task in tasks)\nend\n\n\nnq/nqueens-nested.jl\n# ネスト並列\nfunction nqueens_nested(n)\n    n ≤ 0 && return 0\n    return parsolve(zeros(Int, n), 1)\nend\n\n# solve関数の並列版\nfunction parsolve(ranks, file)\n    n = length(ranks)\n    n - file &lt; 12 && return solve(ranks, file)\n    tasks = map(1:n) do rank\n        @spawn begin\n            for i in 1:file-1\n                r = rank - ranks[i]\n                if r == 0 || file - i == abs(r)\n                    return 0\n                end\n            end\n            let ranks = copy(ranks)\n                ranks[file] = rank\n                return parsolve(ranks, file + 1)\n            end\n        end\n    end\n    return sum(fetch(task)::Int for task in tasks)\nend"
+  },
+  {
+    "objectID": "code/Othello/docs/src/index.html",
+    "href": "code/Othello/docs/src/index.html",
+    "title": "Othello",
+    "section": "",
+    "text": "CurrentModule = Othello\n\nOthello\nDocumentation for Othello.\n\nModules = [Othello]"
+  },
+  {
+    "objectID": "code/nq/PlotMT.html",
+    "href": "code/nq/PlotMT.html",
+    "title": "「Juliaプログラミング大全」サポートページ",
+    "section": "",
+    "text": "using DataFrames\nusing CSV\nusing Statistics\nusing PyPlot\nrc(\"axes.spines\", top = false, right = false)\n\n\ndata = DataFrame(CSV.File(\"benchmark.txt\", delim = '\\t'))\n\nfig, ax = subplots(dpi = 150)\nfor (i, exe) in enumerate([\"./nqueens.jl\", \"./nqueens-cpp-O1\", \"./nqueens-cpp-O3\", \"./nqueens.py\"])\n    if exe == \"./nqueens.jl\"\n        label = \"Julia\"\n    elseif exe == \"./nqueens.py\"\n        label = \"Python\"\n    elseif exe == \"./nqueens-cpp-O1\"\n        label = \"C++ O1\"\n    else\n        label = \"C++ O3\"\n    end\n    sub = data[data.exe .== exe,:]\n    height = 1/7\n    ax.barh((@. sub.size + i * height - 5height/2), sub.elapsed; height, label)\nend\nax.legend()\nax.grid(alpha = 1/2, axis = \"x\")\nax.set(xlabel = \"Elapsed time [s]\", ylabel = \"N\", xscale = \"log\")\nax.invert_yaxis()\nfig.savefig(\"nqueens.pdf\", bbox_inches = \"tight\")\n\n\n\n\n\ndata = DataFrame(CSV.File(\"benchmark-mt.txt\", delim = '\\t'))\n\nfig, (ax1, ax2) = subplots(2, 1, dpi = 150, sharex = true)\nserial = data[data.name .== \"serial\",:]\nbase = median(serial.elapsed)\nax1.axhline(base, ls = \"dotted\", color = \"gray\", lw = 1)\nax2.axline((0, 0), slope = 1, ls = \"dotted\", color = \"gray\", lw = 1)\nfor name in [\"flat\", \"nested\"]\n    base = median(data[(data.name .== name) .& (data.nthreads .== 1),:elapsed])\n    sub = data[data.name .== name,:]\n    ax1.plot(sub.nthreads, sub.elapsed, \"+\", label = name)\n    ax2.plot(sub.nthreads, sub.elapsed .\\ base, \"+\", label = name)\nend\nax1.legend(loc = \"upper right\")\nax1.grid(axis = \"y\", alpha = 1/2)\nax2.grid(axis = \"y\", alpha = 1/2)\nax1.set(ylabel = \"Elapsed time [s]\", ylim = (0, nothing), xlim = (0, 16.5))\nax2.set(ylabel = \"Speedup\", xlabel = \"Number of threads\", ylim = (0, nothing))\nfig.tight_layout()\nfig.savefig(\"nqueens-mt.pdf\", bbox_inches = \"tight\")"
+  },
+  {
+    "objectID": "code/fs/Plot.html",
+    "href": "code/fs/Plot.html",
+    "title": "「Juliaプログラミング大全」サポートページ",
+    "section": "",
+    "text": "using DataFrames\nusing CSV\nusing PyPlot\nrc(\"axes.spines\", top = false, right = false)\n\n\nt1 = DataFrame(CSV.File(\"benchmark-t1.txt\", delim = '\\t'))\n\n8 rows × 3 columns\n\n\n\n\nnthreads\nk\nelapsed\n\n\n\nInt64\nInt64\nFloat64\n\n\n\n\n1\n1\n0\n0.127455\n\n\n2\n1\n1\n0.127481\n\n\n3\n1\n2\n0.127432\n\n\n4\n1\n3\n0.127389\n\n\n5\n1\n4\n0.127416\n\n\n6\n1\n5\n0.127401\n\n\n7\n1\n6\n0.127495\n\n\n8\n1\n7\n0.127408\n\n\n\n\n\n\n\nt4 = DataFrame(CSV.File(\"benchmark-t4.txt\", delim = '\\t'))\n\n8 rows × 3 columns\n\n\n\n\nnthreads\nk\nelapsed\n\n\n\nInt64\nInt64\nFloat64\n\n\n\n\n1\n4\n0\n0.128047\n\n\n2\n4\n1\n0.064825\n\n\n3\n4\n2\n0.0648395\n\n\n4\n4\n3\n0.0319649\n\n\n5\n4\n4\n0.0319643\n\n\n6\n4\n5\n0.0319739\n\n\n7\n4\n6\n0.0319514\n\n\n8\n4\n7\n0.0319574\n\n\n\n\n\n\n\nfig, ax = subplots(dpi = 150)\nax.plot(t1[!,:k], t1[!,:elapsed], \".-\", label = \"T1\")\nax.plot(t4[!,:k], t4[!,:elapsed], \".-\", label = \"T4\")\nax.grid(axis = \"y\")\nax.legend()\nax.set(ylim = (0, nothing), xlabel = \"k\", ylabel = \"Elapsed time [s]\")\nfig.savefig(\"falsesharing.pdf\", bbox_inches = \"tight\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ウェブサイトについて",
+    "section": "",
+    "text": "このウェブサイトは書籍「Juliaプログラミング大全」（講談社サイエンティフィク）のサポートページです。\n書籍中のサンプルコードはサンプルコードを参照してください。\n既知の訂正事項は訂正を参照してください。\n本書に関して、著者への質問や誤植の指摘等は bicycle1885@gmail.com までご連絡ください。"
+  },
+  {
+    "objectID": "index.html#購入",
+    "href": "index.html#購入",
+    "title": "ウェブサイトについて",
+    "section": "購入",
+    "text": "購入\n一般書店のほか、次の通販サイトから購入できます。\n\nAmazon\n紀伊國屋書店\nヨドバシ.com\ne-hon"
+  },
+  {
+    "objectID": "index.html#更新履歴",
+    "href": "index.html#更新履歴",
+    "title": "ウェブサイトについて",
+    "section": "更新履歴",
+    "text": "更新履歴\n\n2023/04/27 ウェブサイトを公開"
+  },
+  {
+    "objectID": "index.html#目次",
+    "href": "index.html#目次",
+    "title": "ウェブサイトについて",
+    "section": "目次",
+    "text": "目次\n\n第1部　導入\n\n1章　Julia観光\n2章　環境構築\n3章　ファーストステップ\n\n第2部　データと言語の基礎\n\n4章　数値と算術\n5章　コレクション\n6章　文字列\n7章　スコープと構文\n8章　型システム\n9章　多重ディスパッチ\n10章　メタプログラミング\n\n第3部　ライブラリ\n\n11章　科学技術計算\n12章　並行プログラミング\n13章　システムプログラミング\n14章　外部プログラムの実行\n15章　他のプログラミング言語との連携\n\n第4部　開発\n\n16章　パッケージ管理と開発\n17章　開発実践ガイド\n18章　性能の改善\n\n付録\n\nA　Markdown\nB　TOML\nC　GitとGitHubの基本"
+  }
+]

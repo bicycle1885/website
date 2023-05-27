@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>「Juliaプログラミング大全」サポートページ - ウェブサイトについて</title>
+<title>「Juliaプログラミング大全」サポートページ – plot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -59,9 +93,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -73,7 +110,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">ウェブサイトについて</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      「Juliaプログラミング大全」サポートページ
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -85,26 +124,26 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">「Juliaプログラミング大全」サポートページ</a> 
+      <a href="../../">「Juliaプログラミング大全」サポートページ</a> 
     </div>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ウェブサイトについて</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./code.html" class="sidebar-item-text sidebar-link">
+  <a href="../../code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">サンプルコード</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./corrections.html" class="sidebar-item-text sidebar-link">
+  <a href="../../corrections.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">訂正</span></a>
   </div>
 </li>
@@ -114,100 +153,179 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#購入" id="toc-購入" class="nav-link active" data-scroll-target="#購入">購入</a></li>
-  <li><a href="#更新履歴" id="toc-更新履歴" class="nav-link" data-scroll-target="#更新履歴">更新履歴</a></li>
-  <li><a href="#目次" id="toc-目次" class="nav-link" data-scroll-target="#目次">目次</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">ウェブサイトについて</h1>
+
+
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">DataFrames</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">using</span> <span class="bu">CSV</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">using</span> <span class="bu">PyPlot</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">rc</span>(<span class="st">"axes.spines"</span>, top <span class="op">=</span> <span class="cn">false</span>, right <span class="op">=</span> <span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1"></a>t1 <span class="op">=</span> <span class="fu">DataFrame</span>(CSV.<span class="fu">File</span>(<span class="st">"benchmark-t1.txt"</span>, delim <span class="op">=</span> <span class="ch">'\t'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="data-frame"><p>8 rows × 3 columns</p>
+<table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">nthreads</th>
+<th data-quarto-table-cell-role="th">k</th>
+<th data-quarto-table-cell-role="th">elapsed</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th data-quarto-table-cell-role="th" title="Float64">Float64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>0</td>
+<td>0.127455</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>1</td>
+<td>0.127481</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1</td>
+<td>2</td>
+<td>0.127432</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+<td>3</td>
+<td>0.127389</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>1</td>
+<td>4</td>
+<td>0.127416</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>1</td>
+<td>5</td>
+<td>0.127401</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>1</td>
+<td>6</td>
+<td>0.127495</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>1</td>
+<td>7</td>
+<td>0.127408</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1"></a>t4 <span class="op">=</span> <span class="fu">DataFrame</span>(CSV.<span class="fu">File</span>(<span class="st">"benchmark-t4.txt"</span>, delim <span class="op">=</span> <span class="ch">'\t'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="data-frame"><p>8 rows × 3 columns</p>
+<table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">nthreads</th>
+<th data-quarto-table-cell-role="th">k</th>
+<th data-quarto-table-cell-role="th">elapsed</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th data-quarto-table-cell-role="th" title="Float64">Float64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4</td>
+<td>0</td>
+<td>0.128047</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4</td>
+<td>1</td>
+<td>0.064825</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>2</td>
+<td>0.0648395</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>3</td>
+<td>0.0319649</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>4</td>
+<td>4</td>
+<td>0.0319643</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>4</td>
+<td>5</td>
+<td>0.0319739</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>4</td>
+<td>6</td>
+<td>0.0319514</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>4</td>
+<td>7</td>
+<td>0.0319574</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>fig, ax <span class="op">=</span> <span class="fu">subplots</span>(dpi <span class="op">=</span> <span class="fl">150</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>ax.<span class="fu">plot</span>(t1[!,<span class="op">:</span>k], t1[!,<span class="op">:</span>elapsed], <span class="st">".-"</span>, label <span class="op">=</span> <span class="st">"T1"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>ax.<span class="fu">plot</span>(t4[!,<span class="op">:</span>k], t4[!,<span class="op">:</span>elapsed], <span class="st">".-"</span>, label <span class="op">=</span> <span class="st">"T4"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>ax.<span class="fu">grid</span>(axis <span class="op">=</span> <span class="st">"y"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>ax.<span class="fu">legend</span>()</span>
+<span id="cb4-6"><a href="#cb4-6"></a>ax.<span class="fu">set</span>(ylim <span class="op">=</span> (<span class="fl">0</span>, <span class="cn">nothing</span>), xlabel <span class="op">=</span> <span class="st">"k"</span>, ylabel <span class="op">=</span> <span class="st">"Elapsed time [s]"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>fig.<span class="fu">savefig</span>(<span class="st">"falsesharing.pdf"</span>, bbox_inches <span class="op">=</span> <span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Plot_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>このウェブサイトは書籍「<a href="https://www.kspub.co.jp/book/detail/5318195.html">Juliaプログラミング大全</a>」（講談社サイエンティフィク）のサポートページです。</p>
-<p><img src="images/cover.jpg" alt="本の表紙"></p>
-<p>書籍中のサンプルコードは<a href="./code.html">サンプルコード</a>を参照してください。</p>
-<p>既知の訂正事項は<a href="./corrections.html">訂正</a>を参照してください。</p>
-<p>本書に関して、著者への質問や誤植の指摘等は bicycle1885@gmail.com までご連絡ください。</p>
-<section id="購入" class="level2">
-<h2 class="anchored" data-anchor-id="購入">購入</h2>
-<p>一般書店のほか、次の通販サイトから購入できます。</p>
-<ul>
-<li><a href="https://amzn.to/3qe9v4y">Amazon</a></li>
-<li><a href="https://www.kinokuniya.co.jp/f/dsg-01-9784065318195">紀伊國屋書店</a></li>
-<li><a href="https://www.yodobashi.com/product/100000009003704673/">ヨドバシ.com</a></li>
-<li><a href="https://www.e-hon.ne.jp/bec/SA/Detail?refISBN=9784065318195">e-hon</a></li>
-</ul>
-</section>
-<section id="更新履歴" class="level2">
-<h2 class="anchored" data-anchor-id="更新履歴">更新履歴</h2>
-<ul>
-<li>2023/04/27 ウェブサイトを公開</li>
-</ul>
-</section>
-<section id="目次" class="level2">
-<h2 class="anchored" data-anchor-id="目次">目次</h2>
-<ul>
-<li>第1部　導入
-<ul>
-<li>1章　Julia観光</li>
-<li>2章　環境構築</li>
-<li>3章　ファーストステップ</li>
-</ul></li>
-<li>第2部　データと言語の基礎
-<ul>
-<li>4章　数値と算術</li>
-<li>5章　コレクション</li>
-<li>6章　文字列</li>
-<li>7章　スコープと構文</li>
-<li>8章　型システム</li>
-<li>9章　多重ディスパッチ</li>
-<li>10章　メタプログラミング</li>
-</ul></li>
-<li>第3部　ライブラリ
-<ul>
-<li>11章　科学技術計算</li>
-<li>12章　並行プログラミング</li>
-<li>13章　システムプログラミング</li>
-<li>14章　外部プログラムの実行</li>
-<li>15章　他のプログラミング言語との連携</li>
-</ul></li>
-<li>第4部　開発
-<ul>
-<li>16章　パッケージ管理と開発</li>
-<li>17章　開発実践ガイド</li>
-<li>18章　性能の改善</li>
-</ul></li>
-<li>付録
-<ul>
-<li>A　Markdown</li>
-<li>B　TOML</li>
-<li>C　GitとGitHubの基本</li>
-</ul></li>
-</ul>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
