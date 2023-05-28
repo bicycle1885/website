@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>「Juliaプログラミング大全」サポートページ - このサイトについて</title>
+<title>Juliaプログラミング大全 - このサイトについて</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">「Juliaプログラミング大全」サポートページ</a> 
+      <a href="./">Juliaプログラミング大全</a> 
     </div>
       </div>
     <div class="sidebar-menu-container"> 
@@ -118,7 +118,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#購入" id="toc-購入" class="nav-link active" data-scroll-target="#購入">購入</a></li>
+  <li><a href="#本書について" id="toc-本書について" class="nav-link active" data-scroll-target="#本書について">本書について</a></li>
+  <li><a href="#購入" id="toc-購入" class="nav-link" data-scroll-target="#購入">購入</a></li>
   <li><a href="#更新履歴" id="toc-更新履歴" class="nav-link" data-scroll-target="#更新履歴">更新履歴</a></li>
   <li><a href="#目次" id="toc-目次" class="nav-link" data-scroll-target="#目次">目次</a></li>
   </ul>
@@ -144,11 +145,36 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>このウェブサイトは書籍「<a href="https://www.kspub.co.jp/book/detail/5318195.html">Juliaプログラミング大全</a>」（講談社サイエンティフィク）のサポートページです。</p>
+<p>このウェブサイトは書籍『<a href="https://www.kspub.co.jp/book/detail/5318195.html">Juliaプログラミング大全</a>』（講談社サイエンティフィク）のサポートページです。</p>
 <p><img src="images/cover.jpg" alt="本の表紙"></p>
 <p>書籍中のサンプルコードは<a href="./code.html">サンプルコード</a>を参照してください。</p>
 <p>既知の訂正事項は<a href="./corrections.html">訂正</a>を参照してください。</p>
 <p>本書に関して、著者への質問や誤植の指摘等は bicycle1885@gmail.com までご連絡ください。</p>
+<section id="本書について" class="level2">
+<h2 class="anchored" data-anchor-id="本書について">本書について</h2>
+<p>本書はプログラミング言語<a href="https://julialang.org/">Julia</a>の総合的な解説書です。 Juliaの基礎的な知識から、実践的な内容まで解説しています。 主にデータ処理・数値計算・統計・機械学習など、科学技術計算にJuliaを利用したい学生・技術者・研究者向けに書かれれていますが、汎用的なプログラミング言語としての機能も丁寧に扱っています。</p>
+<p>本書を読むにあたり、Juliaの知識は必要ありません。 数値や配列の操作やif文などの基礎的な構文の解説も本書に含まれています。 PythonやMATLABなど他のプログラミング言語に親しんでいれば、本書を読み進めるのはそれほど難しくないでしょう。 ただし、ターミナルやエディタの操作は前提としていますので、全くプログラミングに触れたことがない状態だと少し難しいかもしれません。</p>
+<p>本書は次の4部で構成されます。</p>
+<dl>
+<dt>第1部｜導入</dt>
+<dd>
+本書の導入部分です。 1章でJuliaがどのような特徴を持った言語なのかを解説し、2章で本書を読むにあたって必要な環境構築を行います。 3章ではJuliaの基本的な機能を概説し、300行程度のオセロプログラムを通してJuliaの実際の書き方を紹介します。 この部分を読むだけでもJuliaを使って簡単なプログラムが書けるようになっています。
+</dd>
+<dt>第2部｜データと言語の基礎</dt>
+<dd>
+Julia言語の解説部分です。 3章から6章ではJuliaの数値・コレクション（配列や辞書など）・文字列の扱い方を説明します。 7章では変数のスコープと、条件分岐・反復・関数定義などの基礎構文を丁寧に解説します。 8章で型システムを説明したのち、9章で特に重要な機能である多重ディスパッチを解説します。 10章ではメタプログラミングを扱います。
+</dd>
+<dt>第3部｜ライブラリ</dt>
+<dd>
+標準ライブラリを中心としたライブラリの解説部分です。 11章は多次元配列・乱数生成・線形代数・統計など、科学技術計算で重要な機能の紹介です。 12章は並列計算を含む並列プログラミングの紹介です。 13章はファイルシステムの操作や時間データの扱いなど、システムプログラミングの機能を説明します。 14章と15章では、Juliaで外部プログラムを実行する機能とC・Python・Rなど多言語との連携方法を解説します。
+</dd>
+<dt>第4部｜開発</dt>
+<dd>
+Juliaを使った実践的な開発の解説部分です。 16章はパッケージの管理方法と開発方法の基本を扱っています。 17章は命名規則やコンパイラの動作など、開発をする上で知っておくと役立つ知識を紹介しています。 18章はJuliaプログラムの性能を計測する方法と性能改善のヒントを具体例で示しています。
+</dd>
+</dl>
+<p>さらに、知っておくと良い開発に関する周辺知識を付録としてまとめています。</p>
+</section>
 <section id="購入" class="level2">
 <h2 class="anchored" data-anchor-id="購入">購入</h2>
 <p>一般書店のほか、次の通販サイトから購入できます。</p>
